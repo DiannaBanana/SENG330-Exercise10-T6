@@ -1,0 +1,16 @@
+@(observation: Observation)
+
+<tr onclick="redirect('/observation/@observation.getId')">
+    <td>
+        @observation.getId
+    </td>
+    <td>
+        @observation.getTime
+    </td>
+    <td>
+        @observation.getWhales.length
+    </td>
+    <td>
+        @observation.getLocation
+    </td>
+</tr>

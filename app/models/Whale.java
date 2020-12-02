@@ -2,35 +2,39 @@ package models;
 
 public class Whale {
 
-  public Long id;
+  private static long numberWhales = 0;
 
-  public String species;
-  public int estimated_weight;
-  //TODO convert to enum
-  public String gender;
+  private final Long id;
+  private String species;
+  private int estimatedWeight;
+  private Gender gender;
 
-  public int getEstimated_weight() {
-    return estimated_weight;
+
+  public Whale(String species, int estimatedWeight, String gender) {
+    this.id = numberWhales++;
+    this.species = species;
+    this.estimatedWeight = estimatedWeight;
+    this.gender = Gender.fromString(gender);
   }
 
-  public void setEstimated_weight(int estimated_weight) {
-    this.estimated_weight = estimated_weight;
+  public int getEstimatedWeight() {
+    return estimatedWeight;
   }
 
-  public String getGender() {
+  public void setEstimatedWeight(int estimatedWeight) {
+    this.estimatedWeight = estimatedWeight;
+  }
+
+  public Gender getGender() {
     return gender;
   }
 
-  public void setGender(String gender) {
+  public void setGender(Gender gender) {
     this.gender = gender;
   }
 
   public Long getId() {
     return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
   }
 
   public String getSpecies() {
@@ -39,5 +43,39 @@ public class Whale {
 
   public void setSpecies(String species) {
     this.species = species;
+  }
+
+  public enum Gender {
+    MALE,
+    FEMALE,
+    UNKNOWN;
+
+
+    public static Gender fromString(String gender) {
+      if (gender.equalsIgnoreCase("m") || gender.equalsIgnoreCase("male")) {
+        return MALE;
+      } else if (gender.equalsIgnoreCase("f") || gender.equalsIgnoreCase("female")) {
+        return FEMALE;
+      } else {
+        return UNKNOWN;
+      }
+    }
+
+    public boolean isMale() {
+      return this == MALE;
+    }
+
+    public boolean isFemale() {
+      return this == FEMALE;
+    }
+
+    @Override
+    public String toString(){
+      return switch (this) {
+        case MALE -> "Male";
+        case FEMALE -> "Female";
+        case UNKNOWN -> "Unknown";
+      };
+    }
   }
 }

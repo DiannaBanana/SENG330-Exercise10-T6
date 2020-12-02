@@ -1,6 +1,8 @@
 package controllers;
 
-import play.mvc.*;
+import models.WhaleModel;
+import play.mvc.Controller;
+import play.mvc.Result;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -15,7 +17,7 @@ public class Driver extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
-        return ok(views.html.index.render());
+        return ok(views.html.index.render("Group 6", WhaleModel.getInstance().getObservationStore().getObservations()));
     }
     
 

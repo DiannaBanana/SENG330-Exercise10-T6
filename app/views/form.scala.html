@@ -1,0 +1,10 @@
+
+@(whaleForm: Form[WhaleData])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@helper.form(routes.WhaleController.handleResult()) {
+    @helper.CSRF.formField
+    @helper.inputText(whaleForm("species"))
+    @helper.inputText(whaleForm("location"))
+    @helper.select(whaleForm("gender"),  FormUtils.doubleString(WhaleData.genderOptions()))
+    <input type="submit"/>
+}
