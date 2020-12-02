@@ -1,8 +1,49 @@
-@()
+
+
+@(body: Any)
+<html lang="en">
 <head>
     <title>Whales</title>
     <link rel="stylesheet" type="text/css" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
+    <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/bootstrap/bootstrap.min.css")'>
+    <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/simple-sidebar.css")'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <script type="text/javascript" src='@routes.Assets.versioned("javascripts/jquery-3.5.1.min.js")'></script>
     <script type="text/javascript" src='@routes.Assets.versioned("javascripts/jquery.tablesorter.min.js")'></script>
+    <script type="text/javascript" src='@routes.Assets.versioned("javascripts/bootstrap/bootstrap.min.js")'></script>
     <script type="text/javascript" src='@routes.Assets.versioned("javascripts/main.js")'></script>
 </head>
+    <body onload="init()">
+        <div class="d-flex" id="wrapper">
+
+                <!-- Sidebar -->
+            <div class="bg-light border-right" id="sidebar-wrapper">
+                <div class="sidebar-heading">Whale Watchers </div>
+                <div class="list-group list-group-flush">
+                    <a href="/" class="list-group-item list-group-item-action bg-light">Observation Dashboard</a>
+                    <a href="/whale" class="list-group-item list-group-item-action bg-light">The Form</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Whale Analytics</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">API Guide</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Credits</a>
+                </div>
+            </div>
+                <!-- /#sidebar-wrapper -->
+
+                <!-- Page Content -->
+            <div id="page-content-wrapper">
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <button class="btn btn-primary" id="menu-toggle"><img src="@routes.Assets.versioned("images/Hamburger_icon.svg")" /></button>
+                </nav>
+
+                <div class="container-fluid">
+                    @body
+                </div>
+            </div>
+                <!-- /#page-content-wrapper -->
+
+        </div>
+    </body>
+</html>
+

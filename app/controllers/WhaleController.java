@@ -11,9 +11,8 @@ import play.mvc.Result;
 
 import javax.inject.Inject;
 
-import java.time.LocalDateTime;
-
-import static play.mvc.Results.*;
+import static play.mvc.Results.ok;
+import static play.mvc.Results.redirect;
 
 public class WhaleController {
   private FormFactory formFactory;
@@ -36,12 +35,15 @@ public class WhaleController {
     Form<WhaleData> filledForm = form.bindFromRequest(request);
 
     if (filledForm.hasErrors()) {
-      return ok("Error sad");
+      return ok(filledForm.errorsAsJson());
     } else {
       try {
         WhaleData temp = filledForm.get();
         Whale whale = new Whale(temp.getSpecies(), 1000, temp.getGender());
-        Observation observation = new Observation(LocalDateTime.now(), temp.getLocation());
+
+
+
+        Observation observation = new Observation(temp.parsedTime(), temp.getLocation());
         observation.getWhales().add(whale);
         WhaleModel.getInstance().getObservationStore().addObservationToStore(observation);
       } catch (Exception e){

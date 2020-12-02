@@ -1,18 +1,13 @@
-@import java.util.stream.Collectors
 @(observation: Observation)
-<html>
-    @views.html.htmlHeader()
 
-<body>
+@section(observation: Observation)= {
     <section id="obsDetail">
 
         @views.html.observationRow(observation)
 
-        @observation.getWhales.map(ob => {
-            views.html.panel(ob)
-        })
+        @observation.getWhales.map(x => views.html.panel(x))
 
-</section>
+    </section>
+}
 
-</body>
-</html>
+@htmlHeader(section(observation))
