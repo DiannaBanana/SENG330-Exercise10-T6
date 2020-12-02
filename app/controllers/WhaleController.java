@@ -40,7 +40,7 @@ public class WhaleController {
     } else {
       try {
         WhaleData temp = filledForm.get();
-        Whale whale = new Whale(temp.getSpecies(), 1000, "m");
+        Whale whale = new Whale(temp.getSpecies(), 1000, temp.getGender());
         Observation observation = new Observation(LocalDateTime.now(), temp.getLocation());
         observation.getWhales().add(whale);
         WhaleModel.getInstance().getObservationStore().addObservationToStore(observation);

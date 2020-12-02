@@ -52,9 +52,9 @@ public class Whale {
 
 
     public static Gender fromString(String gender) {
-      if (gender.toLowerCase().equals("m")) {
+      if (gender.equalsIgnoreCase("m") || gender.equalsIgnoreCase("male")) {
         return MALE;
-      } else if (gender.equalsIgnoreCase("f")) {
+      } else if (gender.equalsIgnoreCase("f") || gender.equalsIgnoreCase("female")) {
         return FEMALE;
       } else {
         return UNKNOWN;
@@ -67,6 +67,15 @@ public class Whale {
 
     public boolean isFemale() {
       return this == FEMALE;
+    }
+
+    @Override
+    public String toString(){
+      return switch (this) {
+        case MALE -> "Male";
+        case FEMALE -> "Female";
+        case UNKNOWN -> "Unknown";
+      };
     }
   }
 }
