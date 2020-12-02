@@ -1,0 +1,18 @@
+@import java.util.stream.Collectors
+@(observation: Observation)
+<html>
+    @views.html.htmlHeader()
+
+<body>
+    <section id="obsDetail">
+
+        @views.html.observationRow(observation)
+
+        @observation.getWhales.map(ob => {
+            views.html.panel(ob)
+        })
+
+</section>
+
+</body>
+</html>
