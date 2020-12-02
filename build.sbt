@@ -1,6 +1,6 @@
 name := "fall20ex10_starter"
 
-version := "0.1"
+version := "2.8.x"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
@@ -11,6 +11,7 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaJpa,
   evolutions,
+
   "com.adrianhurt" %% "play-bootstrap" % "1.6.1-P28-B4",
   "org.hibernate" % "hibernate-core" % "5.4.9.Final",
   "com.h2database" % "h2" % "1.4.192"

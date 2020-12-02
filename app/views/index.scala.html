@@ -1,4 +1,7 @@
-@(groupName: String, whales: List[Whale])
+@import java.util
+
+
+@(groupName: String, observations: util.List[Observation])
 
 <html>
 <head>
@@ -26,14 +29,12 @@
       <li>HTML files at app/views/ (they should be in format filename.scala.html)</li>
     </ul>
 
-      @whales.map { project =>
-      @views.html.panel(project)
-      }
-
-
     </article>
   </div>
 </section>
+
+  @views.html.observationTable(observations)
+
 </body>
 </html>
 
