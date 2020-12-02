@@ -1,0 +1,12 @@
+
+@(observationForm: Form[ObservationData])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@section(whaleForm: Form[ObservationData]) = {
+    @helper.form(routes.ObservationController.createObservation()) {
+    @helper.CSRF.formField
+    @helper.inputText(whaleForm("location"))
+    @helper.inputText(whaleForm("time"), Symbol("type") -> "datetime-local")
+    <input type="submit"/>
+    }
+}
+@htmlHeader(section(observationForm))

@@ -2,17 +2,14 @@ package controllers;
 
 import models.Whale;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class WhaleData {
     private String species = "";
-    private String location = "";
     private String gender = "";
-    private String time = "";
-
+    private int estimatedWeight = 0;
 
 
     public String getSpecies() {
@@ -23,13 +20,6 @@ public class WhaleData {
         this.species = species;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
     public String getGender() {
         return gender;
@@ -43,17 +33,11 @@ public class WhaleData {
         return Arrays.stream(Whale.Gender.values()).map(Whale.Gender::toString).collect(Collectors.toList());
     }
 
-    public String getTime() {
-        return time;
+    public int getEstimatedWeight() {
+        return estimatedWeight;
     }
 
-    public void setTime(String time) {
-        this.time = time;
-        LocalDateTime.parse(time);
-    }
-
-
-    public LocalDateTime parsedTime(){
-        return LocalDateTime.parse(time);
+    public void setEstimatedWeight(int estimatedWeight) {
+        this.estimatedWeight = estimatedWeight;
     }
 }

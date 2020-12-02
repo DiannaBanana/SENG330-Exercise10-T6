@@ -1,4 +1,4 @@
-@(observation: Observation)
+@(observation: Observation, whaleForm: Form[WhaleData])(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @section(observation: Observation)= {
     <section id="obsDetail">
@@ -7,6 +7,7 @@
 
         @observation.getWhales.map(x => views.html.panel(x))
 
+        @views.html.whaleForm(observation, whaleForm)
     </section>
 }
 

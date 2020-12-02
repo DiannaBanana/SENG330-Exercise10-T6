@@ -1,11 +1,14 @@
 
 @(whaleForm: Form[WhaleData])(implicit request: Http.Request, messages: play.i18n.Messages)
 
-@helper.form(routes.WhaleController.handleResult()) {
+@section(whaleForm: Form[WhaleData]) = {
+    @helper.form(routes.WhaleController.handleResult(0)) {
     @helper.CSRF.formField
     @helper.inputText(whaleForm("species"))
     @helper.inputText(whaleForm("location"))
     @helper.select(whaleForm("gender"),  FormUtils.doubleString(WhaleData.genderOptions()))
     @helper.inputText(whaleForm("time"), Symbol("type") -> "datetime-local")
     <input type="submit"/>
+    }
 }
+@htmlHeader(section(whaleForm))

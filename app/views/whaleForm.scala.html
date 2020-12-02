@@ -1,0 +1,13 @@
+
+@(observation: Observation, whaleForm: Form[WhaleData])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+@section(whaleForm: Form[WhaleData]) = {
+    @helper.form(routes.WhaleController.handleResult(obsId = observation.getId)) {
+    @helper.CSRF.formField
+    @helper.inputText(whaleForm("species"))
+    @helper.inputText(whaleForm("weight"))
+    @helper.select(whaleForm("gender"),  FormUtils.doubleString(WhaleData.genderOptions()))
+    <input type="submit"/>
+    }
+}
+@section(whaleForm)

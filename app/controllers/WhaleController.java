@@ -10,6 +10,7 @@ import play.mvc.Http;
 import play.mvc.Result;
 
 import javax.inject.Inject;
+import java.util.Optional;
 
 import static play.mvc.Results.ok;
 import static play.mvc.Results.redirect;
@@ -27,11 +28,7 @@ public class WhaleController {
   }
 
 
-  public Result create(Http.Request request) {
-    return ok(views.html.form.render(form, request, messages.preferred(request)));
-  }
-
-  public Result handleResult(Http.Request request) {
+  public Result handleResult(Http.Request request, Long obsId) {
     Form<WhaleData> filledForm = form.bindFromRequest(request);
 
     if (filledForm.hasErrors()) {
@@ -39,17 +36,15 @@ public class WhaleController {
     } else {
       try {
         WhaleData temp = filledForm.get();
-        Whale whale = new Whale(temp.getSpecies(), 1000, temp.getGender());
+        Whale whale = new Whale(temp.getSpecies(), temp.getEstimatedWeight(), temp.getGender());
 
 
-
-        Observation observation = new Observation(temp.parsedTime(), temp.getLocation());
-        observation.getWhales().add(whale);
-        WhaleModel.getInstance().getObservationStore().addObservationToStore(observation);
+        Optional<Observation> obsWrapper = WhaleModel.getInstance().getObservationStore().getObservationById(obsId);
+        obsWrapper.ifPresent(observation -> observation.getWhales().add(whale));
       } catch (Exception e){
         e.printStackTrace();
       }
-      return redirect(routes.Driver.index());
+      return redirect(routes.ObservationController.showObservation(obsId));
     }
   }
 
