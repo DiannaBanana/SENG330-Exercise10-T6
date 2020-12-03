@@ -33,7 +33,7 @@ public class ObservationController extends Controller {
             return ok(views.html.observationDetail.render(observation.get(), whaleDataForm, r, me.preferred(r)));
         }
 
-        return ok("That observation does not exist");
+        return redirect(routes.Driver.index());
     }
 
     public Result createObservation(Http.Request r){

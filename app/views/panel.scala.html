@@ -1,6 +1,14 @@
-@(whale: Whale)
+@(observation: Observation, whale: Whale)
 
 <div class="panel">
-    <p class="title">@{whale.getSpecies()}</p>
-    <img src="/assets/images/@{whale.getSpecies()}.png" />
+    <a class="delete" href="@routes.WhaleController.removeWhale(observation.getId, whale.getId)">
+    </a>
+    <div class="image-wrapper">
+        <img src="/assets/images/@{whale.getSpecies}.png"  alt="@{whale.getSpecies}"/>
+    </div>
+    <h1 class="title">@{whale.getSpecies}</h1>
+    <div class="whale_info vertically-centered">
+        <div>Estimated Weight: @whale.getEstimatedWeight kg</div>
+        <div>Gender: @whale.getGender</div>
+    </div>
 </div>

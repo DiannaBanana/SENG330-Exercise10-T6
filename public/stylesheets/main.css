@@ -1,5 +1,43 @@
 .panel{
-    border-style: solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 440px;
+    height: 460px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.panel img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.image-wrapper{
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+}
+
+.panel h1{
+    text-align:center;
+}
+
+
+.card-group{
+    display: flex;
+    justify-content: center;
+}
+
+.whale_info{
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+.vertically-centered{
+    display: flex;
+    align-items: center;
 }
 
 .observation-table {
@@ -13,6 +51,44 @@
     padding: 8px;
 }
 
+.panel>form, .panel input{
+    max-width: 100%;
+}
+
+#weight {
+    width: 70px;
+    text-align: right;
+}
+
+#gender{
+    width: 30px;
+    text-align: right;
+}
+
+#species{
+    text-align: center;
+}
+
+.delete{
+    font-size: 2em;
+    display: inline-block;
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    top: 0;
+    width:25px;
+    height: 25px;
+    color: black;
+    background-image: url("/assets/images/delete.svg");
+}
+
+.delete:hover{
+    background-color: red;
+    color: black;
+    text-decoration: none;
+}
+
+
 .observation-table tr:nth-child(even){background-color: #f2f2f2;}
 
 .observation-table tr:hover {background-color: #ddd;}
@@ -24,3 +100,4 @@
     background-color: #4CAF50;
     color: white;
 }
+

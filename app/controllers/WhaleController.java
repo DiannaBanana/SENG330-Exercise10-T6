@@ -48,4 +48,12 @@ public class WhaleController {
     }
   }
 
+  public Result removeWhale(Long obsId, Long whaleId){
+    Optional<Observation> observationOptional = WhaleModel.getInstance().getObservationStore().getObservationById(obsId);
+
+    observationOptional.ifPresent(observation -> observation.getWhales().removeIf(w -> w.getId().equals(whaleId)));
+
+    return redirect(routes.ObservationController.showObservation(obsId));
+  }
+
 }
