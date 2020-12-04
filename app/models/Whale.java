@@ -50,7 +50,6 @@ public class Whale {
     FEMALE,
     UNKNOWN;
 
-
     public static Gender fromString(String gender) {
       if (gender.equalsIgnoreCase("m") || gender.equalsIgnoreCase("male")) {
         return MALE;
@@ -70,12 +69,17 @@ public class Whale {
     }
 
     @Override
-    public String toString(){
-      return switch (this) {
-        case MALE -> "Male";
-        case FEMALE -> "Female";
-        case UNKNOWN -> "Unknown";
-      };
+    public String toString() {
+      switch (this) {
+        case MALE:
+          return "Male";
+        case FEMALE:
+          return "Female";
+        case UNKNOWN:
+          return "Unknown";
+        default:
+          throw new IllegalArgumentException();
+      }
     }
   }
-}
+  }
