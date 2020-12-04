@@ -49,7 +49,7 @@ public class ObservationController extends Controller {
                 ObservationData filledData = filledForm.get();
                 Observation o = new Observation(filledData.parsedTime(), filledData.getLocation());
                 WhaleModel.getInstance().getObservationStore().addObservationToStore(o);
-                return redirect(routes.Driver.index());
+                return redirect(routes.ObservationController.showObservation(o.getId()));
             } catch (Exception e){
                 e.printStackTrace();
                 return ok(views.html.createObservationForm.render(observationDataForm, r, me.preferred(r)));

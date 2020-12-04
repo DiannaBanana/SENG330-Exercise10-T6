@@ -2,4 +2,19 @@
 
 
 @(groupName: String, observations: util.List[Observation])
-    @{views.html.htmlHeader(views.html.observationTable(observations))}
+
+@section(groupName: String, observations: util.List[Observation]) = {
+    <h1>Welcome to Whale Watchers!</h1>
+
+    <p>
+        To add an observation navigate to <a href="@routes.ObservationController.createObservation()">Add observation</a>
+
+        Once you have created the observation record, you can add as many whales as you saw. A summary of all active
+        observations is given below. The columns are sortable, click the table headers to do so. Click on an observation
+        row to see additional details.
+    </p>
+
+    @views.html.observationTable(observations)
+}
+
+@views.html.htmlHeader(section(groupName, observations))
