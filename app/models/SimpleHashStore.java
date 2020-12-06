@@ -19,4 +19,6 @@ public class SimpleHashStore implements ObservationStore{
   public void addObservationToStore(Observation toAdd) {
     observations.put(toAdd.getId(), toAdd);
   }
+
 }
+
