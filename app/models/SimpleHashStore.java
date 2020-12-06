@@ -2,9 +2,8 @@ package models;
 
 import java.util.*;
 
-public class SimpleHashStore implements ObservationStore, WhaleStore{
+public class SimpleHashStore implements ObservationStore{
   private final HashMap<Long, Observation> observations = new HashMap<>();
-  private final HashMap<Long, Whale> whales = new HashMap<>();
 
   @Override
   public Optional<Observation> getObservationById(long id) {
@@ -21,9 +20,5 @@ public class SimpleHashStore implements ObservationStore, WhaleStore{
     observations.put(toAdd.getId(), toAdd);
   }
 
-  @Override
-  public List<Whale> getAllWhales() {
-    return new ArrayList<>(whales.values());
-  }
 }
 
