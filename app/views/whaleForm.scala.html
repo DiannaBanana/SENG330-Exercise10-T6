@@ -6,7 +6,7 @@
     @helper.CSRF.formField
     @helper.inputText(whaleForm("species"))
     @helper.inputText(whaleForm("weight"))
-    @helper.select(whaleForm("gender"),  FormUtils.doubleString(WhaleData.genderOptions()))
+    @helper.select(whaleForm("gender"),  _root_.utils.FormUtils.doubleString(WhaleData.genderOptions()))
     <input type="submit"/>
     }
 }

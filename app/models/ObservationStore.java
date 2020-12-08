@@ -7,4 +7,6 @@ public interface ObservationStore {
   Optional<Observation> getObservationById(long id);
   List<Observation> getObservations();
   void addObservationToStore(Observation toAdd);
+  void clearAll();
+  void removeObservationById(long id);
 }
