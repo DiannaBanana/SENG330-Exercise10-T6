@@ -1,20 +1,22 @@
 package models;
 
+import javax.inject.Singleton;
+
+@Singleton
 public class WhaleModel {
-  private static final WhaleModel INSTANCE = new WhaleModel();
+  private final ObservationStore observationStore;
+  private final WhaleStore whaleStore;
 
-  public static WhaleModel getInstance(){
-    return INSTANCE;
-  }
-
-  private final ObservationStore store;
-
-  private WhaleModel(){
-    store = new SimpleHashStore();
+  public WhaleModel(){
+    SimpleHashStore store = new SimpleHashStore();
+    observationStore = store;
+    whaleStore = store;
   }
 
   public ObservationStore getObservationStore(){
-    return store;
+    return observationStore;
   }
+
+  public WhaleStore getWhaleStore(){return whaleStore;}
 
 }

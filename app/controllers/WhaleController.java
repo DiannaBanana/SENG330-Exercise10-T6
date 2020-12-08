@@ -19,12 +19,14 @@ public class WhaleController {
   private FormFactory formFactory;
   private MessagesApi messages;
   private Form<WhaleData> form;
+  private WhaleModel activeModel;
 
   @Inject
-  public WhaleController(FormFactory f, MessagesApi messages){
+  public WhaleController(FormFactory f, MessagesApi messages, WhaleModel model){
     formFactory = f;
     this.messages = messages;
     form = formFactory.form(WhaleData.class);
+    activeModel = model;
   }
 
 
@@ -39,7 +41,7 @@ public class WhaleController {
         Whale whale = new Whale(temp.getSpecies(), temp.getEstimatedWeight(), temp.getGender());
 
 
-        Optional<Observation> obsWrapper = WhaleModel.getInstance().getObservationStore().getObservationById(obsId);
+        Optional<Observation> obsWrapper = activeModel.getObservationStore().getObservationById(obsId);
         obsWrapper.ifPresent(observation -> observation.getWhales().add(whale));
       } catch (Exception e){
         e.printStackTrace();
@@ -49,7 +51,7 @@ public class WhaleController {
   }
 
   public Result removeWhale(Long obsId, Long whaleId){
-    Optional<Observation> observationOptional = WhaleModel.getInstance().getObservationStore().getObservationById(obsId);
+    Optional<Observation> observationOptional = activeModel.getObservationStore().getObservationById(obsId);
 
     observationOptional.ifPresent(observation -> observation.getWhales().removeIf(w -> w.getId().equals(whaleId)));
 

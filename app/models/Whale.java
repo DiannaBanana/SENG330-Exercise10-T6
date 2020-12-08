@@ -11,10 +11,14 @@ public class Whale {
 
 
   public Whale(String species, int estimatedWeight, String gender) {
+    this(species, estimatedWeight, Gender.fromString(gender));
+  }
+
+  public Whale(String species, int estimatedWeight, Gender gen) {
     this.id = numberWhales++;
     this.species = species;
     this.estimatedWeight = estimatedWeight;
-    this.gender = Gender.fromString(gender);
+    this.gender = gen;
   }
 
   public int getEstimatedWeight() {

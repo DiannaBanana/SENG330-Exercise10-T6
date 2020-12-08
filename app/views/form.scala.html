@@ -6,7 +6,7 @@
     @helper.CSRF.formField
     @helper.inputText(whaleForm("species"))
     @helper.inputText(whaleForm("location"))
-    @helper.select(whaleForm("gender"),  FormUtils.doubleString(WhaleData.genderOptions()))
+    @helper.select(whaleForm("gender"),  _root_.utils.FormUtils.doubleString(WhaleData.genderOptions()))
     @helper.inputText(whaleForm("time"), Symbol("type") -> "datetime-local")
     <input type="submit"/>
     }

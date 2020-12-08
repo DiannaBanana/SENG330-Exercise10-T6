@@ -12,22 +12,24 @@ import java.util.Optional;
 
 public class ObservationController extends Controller {
 
-    private FormFactory formFactory;
-    private MessagesApi me;
-    private Form<ObservationData> observationDataForm;
-    private Form<WhaleData> whaleDataForm;
+    private final FormFactory formFactory;
+    private final MessagesApi me;
+    private final Form<ObservationData> observationDataForm;
+    private final Form<WhaleData> whaleDataForm;
+    private final WhaleModel activeModel;
 
 
     @Inject
-    public ObservationController(FormFactory f, MessagesApi messagesApi){
+    public ObservationController(FormFactory f, MessagesApi messagesApi, WhaleModel model){
         formFactory = f;
         observationDataForm = formFactory.form(ObservationData.class);
         whaleDataForm = formFactory.form(WhaleData.class);
         me = messagesApi;
+        activeModel = model;
     }
 
     public Result showObservation(Http.Request r, Long obsId){
-        Optional<Observation> observation = WhaleModel.getInstance().getObservationStore().getObservationById(obsId);
+        Optional<Observation> observation = activeModel.getObservationStore().getObservationById(obsId);
 
         if(observation.isPresent()){
             return ok(views.html.observationDetail.render(observation.get(), whaleDataForm, r, me.preferred(r)));
@@ -48,7 +50,7 @@ public class ObservationController extends Controller {
             try {
                 ObservationData filledData = filledForm.get();
                 Observation o = new Observation(filledData.parsedTime(), filledData.getLocation());
-                WhaleModel.getInstance().getObservationStore().addObservationToStore(o);
+                activeModel.getObservationStore().addObservationToStore(o);
                 return redirect(routes.ObservationController.showObservation(o.getId()));
             } catch (Exception e){
                 e.printStackTrace();

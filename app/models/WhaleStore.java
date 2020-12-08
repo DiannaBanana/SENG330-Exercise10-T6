@@ -1,5 +1,6 @@
 package models;
 
+import java.security.InvalidParameterException;
 import java.util.List;
 
 /*
@@ -8,4 +9,5 @@ import java.util.List;
  */
 public interface WhaleStore{
     List<Whale> getAllWhales();
+    void addWhale(Whale w, long obsId) throws InvalidParameterException;
 }
