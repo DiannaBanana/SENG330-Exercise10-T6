@@ -10,6 +10,9 @@
     <input type="submit"/>
     }
 }
+    @optionBuild(gender: String) = {
+        <option value="@gender">@gender</option>
+    }
 
 @panelVersion(whaleForm: Form[WhaleData])={
     <div class="panel">
@@ -22,7 +25,11 @@
             <h1 class="title"><input type="text" id="species" name="species" placeholder="Species" value=""></h1>
             <div class="whale_info vertically-centered">
                 <div>Estimated Weight: <input type="text" id="estimatedWeight" name="estimatedWeight" value="">kg</div>
-                <div>Gender: <input type="text" id="gender" name="gender" value=""></div>
+                <div>Gender:
+                    <select type="text" id="gender" name="gender" >
+                    @WhaleData.genderOptions().asScala.map(x => optionBuild(x))
+                    </select>
+                </div>
                 <input type="submit"/>
             </div>
         </form>
