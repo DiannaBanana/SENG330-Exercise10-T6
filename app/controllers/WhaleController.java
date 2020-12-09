@@ -6,16 +6,14 @@ import models.WhaleModel;
 import play.data.Form;
 import play.data.FormFactory;
 import play.i18n.MessagesApi;
+import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 
 import javax.inject.Inject;
 import java.util.Optional;
 
-import static play.mvc.Results.ok;
-import static play.mvc.Results.redirect;
-
-public class WhaleController {
+public class WhaleController extends Controller {
   private FormFactory formFactory;
   private MessagesApi messages;
   private Form<WhaleData> form;

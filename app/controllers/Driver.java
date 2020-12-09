@@ -28,6 +28,10 @@ public class Driver extends Controller {
     public Result index() {
         return ok(views.html.index.render("Group 6", activeModel.getObservationStore().getObservations()));
     }
+
+    public Result credits() {
+        return ok(views.html.credits.render());
+    }
     
 
 }

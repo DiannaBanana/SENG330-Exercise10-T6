@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Whale;
+import play.data.validation.Constraints;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +10,8 @@ import java.util.stream.Collectors;
 public class WhaleData {
     private String species = "";
     private String gender = "";
+
+    @Constraints.Min(value = 0)
     private int estimatedWeight = 0;
 
 

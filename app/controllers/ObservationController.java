@@ -10,7 +10,6 @@ import play.mvc.Http;
 import play.mvc.Result;
 
 import javax.inject.Inject;
-import java.util.List;
 import java.util.Optional;
 
 public class ObservationController extends Controller {
@@ -47,6 +46,7 @@ public class ObservationController extends Controller {
 
         Optional<String> uriList = r.getHeaders().get("Raw-Request-URI");
 
+        //The first time the form is shown the error messages should not appear.
         if (uriList.isPresent() && !uriList.get().contains("?")) {
             return ok(views.html.createObservationForm.render(observationDataForm, r, me.preferred(r)));
         }
