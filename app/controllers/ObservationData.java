@@ -1,9 +1,14 @@
 package controllers;
 
+import play.data.validation.Constraints;
+
 import java.time.LocalDateTime;
 
 public class ObservationData {
+    @Constraints.Required
     private String location = "";
+
+    @Constraints.Required
     private String time = "";
 
     public String getLocation() {
