@@ -9,4 +9,9 @@ public interface ObservationStore {
   void addObservationToStore(Observation toAdd);
   void clearAll();
   void removeObservationById(long id);
+
+
+  interface IdGenerator{
+    long generateId();
+  }
 }

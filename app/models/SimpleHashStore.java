@@ -1,7 +1,10 @@
 package models;
 
 import java.security.InvalidParameterException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
 
 public class SimpleHashStore implements ObservationStore, WhaleStore{
   private final HashMap<Long, Observation> observations = new HashMap<>();
@@ -49,5 +52,7 @@ public class SimpleHashStore implements ObservationStore, WhaleStore{
       throw new InvalidParameterException("No observation exists with id " + obsId);
     }
   }
+
+
 }
 

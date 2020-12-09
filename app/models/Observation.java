@@ -1,18 +1,26 @@
 package models;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Observation {
   private static long observationCount = 0;
 
-  private final List<Whale> whales = new ArrayList<>();
+  private final Set<Whale> whales = new HashSet<>();
   private final LocalDateTime time;
   private final String location;
   private final Long id;
 
-  public Observation(LocalDateTime time, String location){
+  /**
+   *
+   * @param time not null
+   * @param location not null
+   */
+  public Observation(@NotNull LocalDateTime time, @NotNull String location){
+    assert time != null : "Time cannot be null";
+    assert location != null: "location cannot be null";
     this.time = time;
     this.location = location;
     this.id = observationCount++;
@@ -31,7 +39,8 @@ public class Observation {
     return time;
   }
 
-  public List<Whale> getWhales() {
+  public Set<Whale> getWhales() {
     return whales;
   }
+
 }

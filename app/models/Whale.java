@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class Whale {
 
   private static long numberWhales = 0;
@@ -47,6 +49,19 @@ public class Whale {
 
   public void setSpecies(String species) {
     this.species = species;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Whale)) return false;
+    Whale whale = (Whale) o;
+    return id.equals(whale.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
   }
 
   public enum Gender {

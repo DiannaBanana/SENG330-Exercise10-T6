@@ -54,8 +54,6 @@ public class JsonAPIControllerTest extends WithApplication {
         assertEquals(0, jsonData.get("body").size());
     }
 
-
-
     @Test
     public void testWithSingleObservation() throws JsonProcessingException {
         cleanup();
