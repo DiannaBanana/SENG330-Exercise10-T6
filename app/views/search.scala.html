@@ -4,7 +4,7 @@
 <form action="@routes.SearchController.search()" method="post" class="center">
     @helper.CSRF.formField
     @helper.select(searchForm("Species"), _root_.utils.FormUtils.doubleString(WhaleData.speciesOptions()))
-    @helper.inputText(searchForm("time"), Symbol("type") -> "datetime-local", Symbol("_label") -> "Date & Time:")
+    @helper.inputText(searchForm("time"), Symbol("_label") -> "Date & Time:")
     @optionBuildSpecies(species: String) = {
     <option value="@species" >@species</option>
     }

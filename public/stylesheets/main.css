@@ -1,5 +1,5 @@
 @media screen and (min-width: 500px) {
-    .panel {
+    .panel, .obs_panel {
         width: 440px;
         height: 460px;
         border: #00dd1c;
@@ -7,7 +7,7 @@
 }
 
 @media all and (max-width: 500px) {
-    .panel {
+    .panel, .obs_panel {
         width: 80%;
         height: calc(80vh);
     }
@@ -150,8 +150,6 @@ hr {
     background-position: bottom;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 30px auto;
-    width: 440px;
-    height: 460px;
     display: flex;
     flex-direction: column;
 }
