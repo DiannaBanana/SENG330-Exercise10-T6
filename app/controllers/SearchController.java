@@ -12,15 +12,11 @@ import play.mvc.Result;
 
 import javax.inject.Inject;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.regex.Pattern;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
-import java.util.Locale;
+
 
 
 public class SearchController extends Controller {
@@ -44,14 +40,15 @@ public class SearchController extends Controller {
     public Result searchObservation(Http.Request r, String keyword) {
         int obsId = 0;
         List<Observation> obs= activeModel.getObservationStore().getObservations();
+        List<Integer> matchId = new ArrayList<>();
         if(keyword.matches("\\d{4}-\\d{2}-\\d{2}")){
-
             LocalDate date = LocalDate.parse(keyword);
             System.out.println("date string : " + keyword +", " + "localdate : " + date);
             for(int k = 0; k < obs.size(); k++){
                 if(obs.get(k).getTime().toLocalDate().isEqual(date)){
                     System.out.println(obs.get(k).getTime().toLocalDate());
                     obsId=k;
+                    matchId.add(k);
                 }
             }
         }else{
@@ -60,8 +57,9 @@ public class SearchController extends Controller {
                 List<Whale> whale_list = new ArrayList<>();
                 whale_list.addAll(whales);
                 for(int j = 0; j < whale_list.size(); j++){
-                    if(whale_list.get(j).getSpecies().equals(keyword)){
+                    if(whale_list.get(j).getSpecies().equalsIgnoreCase(keyword)){
                         obsId = i;
+                        matchId.add(i);
                     }
                 }
             }
