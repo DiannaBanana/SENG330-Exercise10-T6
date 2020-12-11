@@ -1,7 +1,11 @@
 
 @(searchForm: Form[SearchData])(implicit request: Http.Request, messages: play.i18n.Messages)
 
-<form action="@routes.SearchController.search()" method="post" class="center">
+<div class="search_panel center">
+    <h2><b>Whale Search</b></h2>
+    Enter the whale species and/or date that you would like to search for.
+    <br /><hr/>
+<form action="@routes.SearchController.search()" method="post">
     @helper.CSRF.formField
     @helper.select(searchForm("Species"), _root_.utils.FormUtils.doubleString(WhaleData.speciesOptions()))
     @helper.inputText(searchForm("time"), Symbol("_label") -> "Date & Time:")
@@ -10,6 +14,8 @@
     }
     <input type="submit" value="Search">
 </form>
+
 <form action="@routes.SearchController.search()" method="get">
     <input type="submit" value="Reset">
 </form>
+</div>

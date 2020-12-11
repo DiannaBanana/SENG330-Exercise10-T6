@@ -143,6 +143,8 @@ hr {
 }
 
 .obs_panel{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px;
     background-color: white;
     background-image: url("/assets/images/btm.png");
     background-size: contain;
@@ -150,6 +152,22 @@ hr {
     background-position: bottom;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.search_panel{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px;
+    background-color: white;
+    background-image: url("/assets/images/btm.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 30px auto;
+    width: 400px;
+    height: 360px;
     display: flex;
     flex-direction: column;
 }
