@@ -11,7 +11,7 @@
     }
 }
     @optionBuild(gender: String) = {
-        <option value="@gender">@gender</option>
+        <option value="@gender" >@gender</option>
     }
 
 @panelVersion(whaleForm: Form[WhaleData])={
@@ -21,17 +21,18 @@
         </div>
         <form action="@routes.WhaleController.handleResult(obsId = observation.getId)" method="POST">
             @helper.CSRF.formField
-
             <h1 class="title"><input type="text" id="species" name="species" placeholder="Species" value=""></h1>
-            <div class="whale_info vertically-centered">
-                <div>Estimated Weight: <input type="text" id="estimatedWeight" name="estimatedWeight" value="">kg</div>
-                <div>Gender:
-                    <select type="text" id="gender" name="gender" >
-                    @WhaleData.genderOptions().asScala.map(x => optionBuild(x))
+            <div class="whale_info">
+                <div>Estimated Weight: <input type="text" id="estimatedWeight" name="estimatedWeight" placeholder="Min. 0" value="">kg </div>
+            </div>
+            <div class="whale_info">
+                <div>Gender: <span class="selectedGender"></span>
+                    <select id="gender" name="gender" >
+                        @WhaleData.genderOptions().asScala.map(x => optionBuild(x))
                     </select>
                 </div>
-                <input type="submit"/>
             </div>
+            <div class= "whale_info"> <input type="submit"/></div>
         </form>
     </div>
 }
