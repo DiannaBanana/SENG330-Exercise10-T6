@@ -8,6 +8,9 @@
 @row(observation: Observation, whale: Whale)={
     <tr onclick="redirect('/observation/@observation.getId')">
         <td>
+            @whale.getId
+        </td>
+        <td>
         @whale.getSpecies
         </td>
         <td>
@@ -32,9 +35,12 @@
     </tr>
 }
 
-<table id="whaleTable" class="tablesorter-bootstrap tablesorter tablesorter5f8107d9a9ca table table-bordered table-striped">
+<table id="whaleTable" class="tablesorter-bootstrap tablesorter tablesorter5f8107d9a9ca table table-bordered table-striped center">
     <thead>
         <tr>
+            <th class="filter-select filter-exact" data-placeholder="Pick an ID">
+                ID
+            </th>
             <th class="filter-select filter-exact" data-placeholder="Pick a species">
                 Species
             </th>
