@@ -1,0 +1,28 @@
+@import java.util
+
+
+@(groupName: String, observations: util.List[Observation])
+
+@section(groupName: String, observations: util.List[Observation]) = {
+    <h1>Welcome to Whale Watchers!</h1>
+
+    <p>
+        This is for search only
+    </p>
+
+    <script>
+            function process()
+            {
+                var url = "http://localhost:9000/result/" + document.getElementById("url").value;
+                location.href = url;
+                return false;
+            }
+    </script>
+
+    <form onSubmit="return process();">
+        Search: <input type="text" name="url" id="url">
+        <input type="submit" value="go">
+    </form>
+}
+
+@views.html.htmlHeader(section(groupName, observations))

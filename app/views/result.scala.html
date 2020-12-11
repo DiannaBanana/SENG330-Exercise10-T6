@@ -1,0 +1,16 @@
+@import java.util
+
+
+@(groupName: String, observations: util.List[Observation])
+
+@section(groupName: String, observations: util.List[Observation]) = {
+    <h1>Welcome to Whale Watchers!</h1>
+
+    <p>
+        This page shows the result of search.
+    </p>
+
+@views.html.searchTable(observations)
+}
+
+@views.html.htmlHeader(section(groupName, observations))

@@ -1,0 +1,29 @@
+@import java.util
+
+@(searches: util.List[Observation])
+
+<table id="observationTable" class="observation-table sortable">
+    <thead>
+        <tr>
+            <th>
+                Index
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Pod Size
+            </th>
+            <th>
+                Location
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @searches.map(ob => {
+            views.html.observationRow(ob)
+        })
+    </tbody>
+
+</table>
+
