@@ -1,44 +1,25 @@
-@import java.util
 
+@(searchForm: Form[SearchData])(implicit request: Http.Request, messages: play.i18n.Messages)
 
-@(groupName: String, observations: util.List[Observation])
-
-@section(groupName: String, observations: util.List[Observation]) = {
+@section(searchForm: Form[SearchData]) = {
     <h1>Welcome to Whale Watchers!</h1>
 
     <p>
         This is for search only
     </p>
 
-    <script>
-            function process_1()
-            {
-                var url = "http://localhost:9000/search/" + document.getElementById("url").value;
-                location.href = url;
-                return false;
-            }
 
-            function process_2()
-            {
-                var url = "http://localhost:9000/search/" + document.getElementById("url").value;
-                location.href = url
-                return false;
-            }
-    </script>
+    <form action="@routes.SearchController.search()" method="post">
+        @helper.CSRF.formField
+        @helper.inputText(searchForm("species"), Symbol("_label") -> "Species:")
+        @helper.inputText(searchForm("time"), Symbol("type") -> "datetime-local", Symbol("_label") -> "Date & Time:")
 
-    <form onSubmit="return process_1();">
-        Species: <input type="text" name="url" id="url">
         <input type="submit" value="go">
     </form>
 
-
-    <form onSubmit="return process_2();">
-        Time: <input type="text" name="url" id="url">
-        <input type="submit" value="go">
-    </form>
 
 
 
 }
 
-@views.html.htmlHeader(section(groupName, observations))
+@views.html.htmlHeader(section(searchForm))
