@@ -51,8 +51,8 @@ public class SearchController extends Controller {
                 speciesFilter = (ob, w) -> s.parseSpecies().equals(w.getSpecies());
             }
 
-            if(!s.getTime().equals("")){
-                dateFilter = (ob, w) -> s.getParsedTime().truncatedTo(ChronoUnit.HOURS).isEqual(ob.getTime().truncatedTo(ChronoUnit.HOURS));
+            if(s.isDateValid()){
+                dateFilter = (ob, w) -> s.getParsedTime().truncatedTo(ChronoUnit.DAYS).isEqual(ob.getTime().truncatedTo(ChronoUnit.DAYS));
             }
 
             BiPredicate<Observation, Whale> finalDateFilter = dateFilter;
