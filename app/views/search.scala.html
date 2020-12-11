@@ -1,10 +1,15 @@
 
 @(searchForm: Form[SearchData])(implicit request: Http.Request, messages: play.i18n.Messages)
 
-<form action="@routes.SearchController.search()" method="post" class="center">
+<div class="search_panel center">
+    <h2><b>Whale Search</b></h2>
+    Enter the whale species and/or date that you would like to search for.
+    <br /><hr/>
+<form action="@routes.SearchController.search()" method="post">
     @helper.CSRF.formField
     @helper.inputText(searchForm("species"), Symbol("_label") -> "Species:")
     @helper.inputText(searchForm("time"), Symbol("_label") -> "Date & Time:")
 
     <input type="submit" value="Search">
 </form>
+</div>
