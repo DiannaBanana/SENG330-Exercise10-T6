@@ -41,9 +41,15 @@
                     </select>
                 </div>
             </h6>
-            <div class= "whale_info"> <input type="submit"/></div>
+            <div class= "whale_info"> <input type="submit" id="whale_submit" disabled="disabled"/></div>
         </form>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            bindValidator('#estimatedWeight');
+        });
+    </script>
 }
 
 @panelVersion(whaleForm)
