@@ -67,10 +67,10 @@ public class Whale {
   public enum Species {
     UNKNOWN,
     HUMPBACK,
-    KILLER,
+    BOWHEAD,
     BLUE,
     FIN,
-    GREY,
+    GRAY,
     ORCA,
     SPERM,
     BELUGA;
@@ -78,14 +78,14 @@ public class Whale {
     public static Species fromString(String species) {
       if (species.equalsIgnoreCase("Humpback")) {
         return HUMPBACK;
-      } else if (species.equalsIgnoreCase("Killer")) {
-        return KILLER;
+      } else if (species.equalsIgnoreCase("Bowhead")) {
+        return BOWHEAD;
       } else if (species.equalsIgnoreCase("Blue")) {
         return BLUE;
       } else if (species.equalsIgnoreCase("Fin")) {
         return FIN;
-      } else if (species.equalsIgnoreCase("Grey")) {
-        return GREY;
+      } else if (species.equalsIgnoreCase("Gray")) {
+        return GRAY;
       } else if (species.equalsIgnoreCase("Orca")) {
         return ORCA;
       } else if (species.equalsIgnoreCase("Sperm")) {
@@ -102,14 +102,14 @@ public class Whale {
       switch (this) {
         case HUMPBACK:
           return "Humpback";
-        case KILLER:
-          return "Killer";
+        case BOWHEAD:
+          return "Bowhead";
         case BLUE:
           return "Blue";
         case FIN:
           return "Fin";
-        case GREY:
-          return "Grey";
+        case GRAY:
+          return "Gray";
         case ORCA:
           return "Orca";
         case SPERM:

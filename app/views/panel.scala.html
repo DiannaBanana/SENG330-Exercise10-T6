@@ -4,11 +4,13 @@
     <a class="delete" href="@routes.WhaleController.removeWhale(observation.getId, whale.getId)">
     </a>
     <div class="image-wrapper">
-        <img src="/assets/images/@{whale.getSpecies.toString.toLowerCase}.png"  alt="@{whale.getSpecies}"/>
+        <img style="object-fit: contain" src="/assets/images/@{whale.getSpecies.toString.toLowerCase}.png"  alt="@{whale.getSpecies}"/>
     </div>
-    <h1 class="title">@{whale.getSpecies}</h1>
+    <h1 class="title">@{whale.getSpecies} Whale</h1>
+    <hr/>
+    <h4 class="center">Identification: @whale.getId</h4>
     <div class="whale_info vertically-centered">
-        <div>Estimated Weight: @whale.getEstimatedWeight kg</div>
-        <div>Gender: @whale.getGender</div>
+        <h5>Estimated Weight: @whale.getEstimatedWeight kg</h5>
+        <h5>Gender: @whale.getGender</h5>
     </div>
 </div>

@@ -1,4 +1,5 @@
 .panel{
+    background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 440px;
     height: 460px;
@@ -38,6 +39,10 @@
 .vertically-centered{
     display: flex;
     align-items: center;
+}
+
+.center{
+    text-align: center;
 }
 
 .observation-table {
@@ -95,8 +100,8 @@
 #observationTable th,#whaleTable th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
+    text-align: center;
+    background-color: #37567F;
     color: white;
 }
 
@@ -110,3 +115,27 @@
     margin: 10px;
 
 }
+
+hr {
+    display: block;
+    height: 1 px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.obs_panel{
+    background-color: white;
+    background-image: url("/assets/images/btm.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 30px auto;
+    width: 440px;
+    height: 460px;
+    display: flex;
+    flex-direction: column;
+}
+
