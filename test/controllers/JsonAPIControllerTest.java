@@ -68,7 +68,7 @@ public class JsonAPIControllerTest extends WithApplication {
                 .observedAt(LocalDateTime.of(2000, 12, 5, 4, 1))
                 .atLocation("UVic").withNWhalesSpecies(5);
 
-        model.getObservationStore().addObservationToStore(ob.build());
+        model.getObservationStore().addObservation(ob.build());
         Result result = route(app, request);
 
 
