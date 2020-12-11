@@ -84,5 +84,5 @@ function validateWhaleInput(tag){
 }
 
 function bindValidator(tag){
-    $(tag).keypress(() => validateWhaleInput(tag));
+    $(tag).keyup(() => validateWhaleInput(tag));
 }
