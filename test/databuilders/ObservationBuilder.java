@@ -28,9 +28,9 @@ public class ObservationBuilder {
         return this;
     }
 
-    public ObservationBuilder withNWhalesSpecies(int n, String species){
+    public ObservationBuilder withNWhalesSpecies(int n){
         for (int i = 0; i < n; i++) {
-            whales.add(new Whale(species, 0, Whale.Gender.UNKNOWN));
+            whales.add(new Whale(Whale.Species.UNKNOWN, 0, Whale.Gender.UNKNOWN));
         }
         return this;
     }

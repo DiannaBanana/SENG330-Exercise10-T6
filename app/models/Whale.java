@@ -7,16 +7,16 @@ public class Whale {
   private static long numberWhales = 0;
 
   private final Long id;
-  private String species;
+  private Species species;
   private int estimatedWeight;
   private Gender gender;
 
 
   public Whale(String species, int estimatedWeight, String gender) {
-    this(species, estimatedWeight, Gender.fromString(gender));
+    this(Species.fromString(species), estimatedWeight, Gender.fromString(gender));
   }
 
-  public Whale(String species, int estimatedWeight, Gender gen) {
+  public Whale(Species species, int estimatedWeight, Gender gen) {
     this.id = numberWhales++;
     this.species = species;
     this.estimatedWeight = estimatedWeight;
@@ -43,11 +43,11 @@ public class Whale {
     return id;
   }
 
-  public String getSpecies() {
+  public Species getSpecies() {
     return species;
   }
 
-  public void setSpecies(String species) {
+  public void setSpecies(Species species) {
     this.species = species;
   }
 
@@ -64,10 +64,70 @@ public class Whale {
     return Objects.hash(id);
   }
 
+  public enum Species {
+    UNKNOWN,
+    HUMPBACK,
+    KILLER,
+    BLUE,
+    FIN,
+    GREY,
+    ORCA,
+    SPERM,
+    BELUGA;
+
+    public static Species fromString(String species) {
+      if (species.equalsIgnoreCase("Humpback")) {
+        return HUMPBACK;
+      } else if (species.equalsIgnoreCase("Killer")) {
+        return KILLER;
+      } else if (species.equalsIgnoreCase("Blue")) {
+        return BLUE;
+      } else if (species.equalsIgnoreCase("Fin")) {
+        return FIN;
+      } else if (species.equalsIgnoreCase("Grey")) {
+        return GREY;
+      } else if (species.equalsIgnoreCase("Orca")) {
+        return ORCA;
+      } else if (species.equalsIgnoreCase("Sperm")) {
+        return SPERM;
+      } else if (species.equalsIgnoreCase("Beluga")) {
+        return BELUGA;
+      } else {
+        return UNKNOWN;
+      }
+    }
+
+    @Override
+    public String toString() {
+      switch (this) {
+        case HUMPBACK:
+          return "Humpback";
+        case KILLER:
+          return "Killer";
+        case BLUE:
+          return "Blue";
+        case FIN:
+          return "Fin";
+        case GREY:
+          return "Grey";
+        case ORCA:
+          return "Orca";
+        case SPERM:
+          return "Sperm";
+        case BELUGA:
+          return "Beluga";
+        case UNKNOWN:
+          return "Unknown";
+        default:
+          throw new IllegalArgumentException();
+      }
+    }
+  }
+
   public enum Gender {
-    MALE ,
-    FEMALE ,
-    UNKNOWN ;
+    UNKNOWN,
+    MALE,
+    FEMALE;
 
 
 

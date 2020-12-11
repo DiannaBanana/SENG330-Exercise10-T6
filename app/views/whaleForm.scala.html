@@ -4,14 +4,18 @@
 @section(whaleForm: Form[WhaleData]) = {
     @helper.form(routes.WhaleController.handleResult(obsId = observation.getId)) {
     @helper.CSRF.formField
-    @helper.inputText(whaleForm("species"))
+    @helper.select(whaleForm("species"), _root_.utils.FormUtils.doubleString(WhaleData.speciesOptions()))
     @helper.inputText(whaleForm("weight"))
     @helper.select(whaleForm("gender"),  _root_.utils.FormUtils.doubleString(WhaleData.genderOptions()))
     <input type="submit"/>
     }
 }
-    @optionBuild(gender: String) = {
+    @optionBuildGender(gender: String) = {
         <option value="@gender" >@gender</option>
+    }
+
+    @optionBuildSpecies(species: String) = {
+        <option value="@species" >@species</option>
     }
 
 @panelVersion(whaleForm: Form[WhaleData])={
@@ -21,17 +25,22 @@
         </div>
         <form action="@routes.WhaleController.handleResult(obsId = observation.getId)" method="POST">
             @helper.CSRF.formField
-            <h1 class="title"><input type="text" id="species" name="species" placeholder="Species" value=""></h1>
-            <div class="whale_info">
-                <div>Estimated Weight: <input type="text" id="estimatedWeight" name="estimatedWeight" placeholder="Min. 0" value="">kg </div>
-            </div>
-            <div class="whale_info">
+            <h4 class="whale_info">
+                <div>Species:
+                    <select id="species" name="species">
+                        @WhaleData.speciesOptions().asScala.map(x => optionBuildSpecies(x))
+                    </select>
+                </div></h4>
+            <h5 class="whale_info">
+                <div>Estimated Weight: <input type="text" id="estimatedWeight" name="estimatedWeight" placeholder="Min. 0" value=""> kg </div>
+            </h5>
+            <h6 class="whale_info">
                 <div>Gender: <span class="selectedGender"></span>
                     <select id="gender" name="gender" >
-                        @WhaleData.genderOptions().asScala.map(x => optionBuild(x))
+                        @WhaleData.genderOptions().asScala.map(x => optionBuildGender(x))
                     </select>
                 </div>
-            </div>
+            </h6>
             <div class= "whale_info"> <input type="submit"/></div>
         </form>
     </div>

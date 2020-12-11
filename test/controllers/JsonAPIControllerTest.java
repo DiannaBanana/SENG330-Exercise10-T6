@@ -66,7 +66,7 @@ public class JsonAPIControllerTest extends WithApplication {
 
         ObservationBuilder ob = new ObservationBuilder()
                 .observedAt(LocalDateTime.of(2000, 12, 5, 4, 1))
-                .atLocation("UVic").withNWhalesSpecies(5, "orca");
+                .atLocation("UVic").withNWhalesSpecies(5);
 
         model.getObservationStore().addObservationToStore(ob.build());
         Result result = route(app, request);
@@ -88,13 +88,13 @@ public class JsonAPIControllerTest extends WithApplication {
 
         ObservationBuilder ob = new ObservationBuilder()
                 .observedAt(LocalDateTime.of(2000, 12, 5, 4, 1))
-                .atLocation("UVic").withNWhalesSpecies(5, "orca");
+                .atLocation("UVic").withNWhalesSpecies(5);
 
         model.getObservationStore().addObservationToStore(ob.build());
 
         ObservationBuilder ob2 = new ObservationBuilder()
                 .observedAt(LocalDateTime.of(2002, 12, 5, 4, 1))
-                .atLocation("UVic").withNWhalesSpecies(1, "grey");
+                .atLocation("UVic").withNWhalesSpecies(1);
         model.getObservationStore().addObservationToStore(ob2.build());
 
 

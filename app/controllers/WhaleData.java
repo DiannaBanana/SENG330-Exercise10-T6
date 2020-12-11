@@ -14,6 +14,9 @@ public class WhaleData {
     @Constraints.Min(value = 0)
     private int estimatedWeight = 0;
 
+    public static List<String> speciesOptions(){
+        return Arrays.stream(Whale.Species.values()).map(Whale.Species::toString).collect(Collectors.toList());
+    }
 
     public String getSpecies() {
         return species;
