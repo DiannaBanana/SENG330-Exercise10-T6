@@ -1,0 +1,9 @@
+@import java.util
+
+@(observations: util.List[Observation])
+
+@section(observations: util.List[Observation]) = {
+    @whaleTable(observations)
+}
+
+    @htmlHeader(section(observations))

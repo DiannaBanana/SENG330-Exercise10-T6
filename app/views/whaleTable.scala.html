@@ -1,0 +1,60 @@
+@import java.util
+
+@import java.util.concurrent.TimeUnit
+@import java.time.temporal.TemporalUnit
+@import java.time.format.DateTimeFormatter
+@import java.time.format.FormatStyle
+@(observations: util.List[Observation])
+
+@row(observation: Observation, whale: Whale)={
+    <tr onclick="redirect('/observation/@observation.getId')">
+        <td>
+        @whale.getSpecies
+        </td>
+        <td>
+        @whale.getEstimatedWeight
+        </td>
+        <td>
+        @whale.getGender
+        </td>
+        <td>
+            @{
+                try {
+                    val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)
+                    formatter.format(observation.getTime)
+                } catch{
+                    case e: Exception => e.getMessage
+                }
+            }
+        </td>
+        <td>
+            @observation.getLocation
+        </td>
+    </tr>
+}
+
+<table id="whaleTable" class="tablesorter-bootstrap tablesorter tablesorter5f8107d9a9ca table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th class="filter-select filter-exact" data-placeholder="Pick a species">
+                Species
+            </th>
+            <th>
+                Estimated Weight (kg)
+            </th>
+            <th class="filter-select filter-exact" data-placeholder="Pick a gender">
+                Gender
+            </th>
+            <th data-sorter="shortDate" >
+                Date
+            </th>
+            <th>
+                Location
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @observations.flatMap(ob => ob.getWhales.map(w => (ob, w))).map(tup => (row _).tupled(tup))
+    </tbody>
+
+</table>

@@ -12,10 +12,10 @@ import play.mvc.Http;
 import play.mvc.Result;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Optional;
 
-
-import static play.mvc.Http.MimeTypes.*;
+import static play.mvc.Http.MimeTypes.JSON;
 
 public class WhaleController extends Controller {
   private FormFactory formFactory;
@@ -64,8 +64,13 @@ public class WhaleController extends Controller {
     if (request.acceptedTypes().stream().map(MediaRange::toString).anyMatch(x -> x.equalsIgnoreCase(JSON))) {
       return new WhaleAPI(activeModel).listWhales(request);
     } else {
-      return ok("This should map to search");
+      return showWhaleTable();
     }
+  }
+
+  public Result showWhaleTable(){
+    List<Observation> whales = activeModel.getObservationStore().getObservations();
+    return ok(views.html.whale_aggregations.render(whales));
   }
 
 }
