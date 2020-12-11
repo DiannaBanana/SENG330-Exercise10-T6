@@ -4,7 +4,7 @@
     <a class="delete" href="@routes.WhaleController.removeWhale(observation.getId, whale.getId)">
     </a>
     <div class="image-wrapper">
-        <img src="/assets/images/@{whale.getSpecies}.png"  alt="@{whale.getSpecies}"/>
+        <img src="/assets/images/@{whale.getSpecies.toString.toLowerCase}.png"  alt="@{whale.getSpecies}"/>
     </div>
     <h1 class="title">@{whale.getSpecies}</h1>
     <div class="whale_info vertically-centered">

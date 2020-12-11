@@ -21,3 +21,13 @@ function doSampleJson(url, tag) {
         $(tag).text(JSON.stringify(data));
     }).fail((data) => {$(tag).text(JSON.stringify(data.responseJSON));});
 }
+
+function validateWhaleInput(tag){
+    if (parseInt($(tag).val()) >= 0){
+        $('#whale_submit').removeAttr('disabled');
+    }
+}
+
+function bindValidator(tag){
+    $(tag).keyup(() => validateWhaleInput(tag));
+}
