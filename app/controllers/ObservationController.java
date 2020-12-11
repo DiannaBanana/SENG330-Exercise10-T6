@@ -68,7 +68,7 @@ public class ObservationController extends Controller {
         try {
             ObservationData filledData = filledForm.get();
             Observation o = new Observation(filledData.parsedTime(), filledData.getLocation());
-            activeModel.getObservationStore().addObservationToStore(o);
+            activeModel.getObservationStore().addObservation(o);
             return redirect(routes.ObservationController.showObservation(o.getId()));
         } catch (Exception e) {
             e.printStackTrace();

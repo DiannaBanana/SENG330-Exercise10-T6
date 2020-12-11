@@ -44,7 +44,7 @@ public class WhaleControllerTest extends WithApplication {
                 .header("accept", HTML);
 
         Result result = route(app, request);
-        assertEquals(303, result.status());
+        assertEquals(SEE_OTHER, result.status());
         assertEquals(routes.SearchController.search().url(), result.header("Location").get());
     }
 
@@ -59,7 +59,7 @@ public class WhaleControllerTest extends WithApplication {
                 .withWhale(testWhale);
 
         Observation complete = obBuilder.build();
-        model.getObservationStore().addObservationToStore(complete);
+        model.getObservationStore().addObservation(complete);
 
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
@@ -85,7 +85,7 @@ public class WhaleControllerTest extends WithApplication {
                 .withWhale(testWhale);
 
         Observation complete = obBuilder.build();
-        model.getObservationStore().addObservationToStore(complete);
+        model.getObservationStore().addObservation(complete);
 
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
@@ -113,7 +113,7 @@ public class WhaleControllerTest extends WithApplication {
                 .observedAt(LocalDateTime.now());
 
         Observation observation = observationBuilder.build();
-        model.getObservationStore().addObservationToStore(observation);
+        model.getObservationStore().addObservation(observation);
 
         Map<String, String[]> validWhaleResponse = Map.of(
                 "gender", new String[]{String.valueOf(Whale.Gender.FEMALE)},
@@ -131,7 +131,7 @@ public class WhaleControllerTest extends WithApplication {
 
         Result result = route(app, request);
 
-        assertEquals(303, result.status());
+        assertEquals(SEE_OTHER, result.status());
 
         assertEquals(1, model.getWhaleStore().getAllWhales().size());
 

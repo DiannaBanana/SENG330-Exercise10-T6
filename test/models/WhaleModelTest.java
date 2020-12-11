@@ -23,7 +23,7 @@ public class WhaleModelTest {
         Observation ob = new ObservationBuilder().atLocation("Home")
                 .observedAt(LocalDateTime.of(2001, 12, 12, 12, 12)).build();
 
-        model.getObservationStore().addObservationToStore(ob);
+        model.getObservationStore().addObservation(ob);
 
         assertEquals(ob, model.getObservationStore().getObservationById(ob.getId()).get());
     }
@@ -37,7 +37,7 @@ public class WhaleModelTest {
         Whale w = new Whale("orca", 100, "f");
         ob.getWhales().add(w);
 
-        model.getObservationStore().addObservationToStore(ob);
+        model.getObservationStore().addObservation(ob);
         model.getObservationStore().getObservationById(ob.getId()).get().getWhales().add(w);
         model.getWhaleStore().addWhale(w, ob.getId());
 

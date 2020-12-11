@@ -53,6 +53,12 @@ function init() {
         theme: 'bootstrap',
     });
 
+
+    $('input#time').datetimepicker({
+        mask:'9999/19/39 29:59'
+    });
+
+
 }
 
 function doSampleJson(url, tag) {

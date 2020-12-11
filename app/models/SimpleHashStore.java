@@ -22,7 +22,7 @@ public class SimpleHashStore implements ObservationStore, WhaleStore{
   }
 
   @Override
-  public void addObservationToStore(Observation toAdd) {
+  public void addObservation(Observation toAdd) {
     observations.put(toAdd.getId(), toAdd);
   }
 
