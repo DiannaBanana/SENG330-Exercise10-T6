@@ -5,17 +5,21 @@
     <h2><b>Whale Search</b></h2>
     Enter the whale species and/or date that you would like to search for.
     <br /><hr/>
-<form action="@routes.SearchController.search()" method="post">
+<form action="@routes.SearchController.search()" method="post" class="center">
     @helper.CSRF.formField
-    @helper.select(searchForm("Species"), _root_.utils.FormUtils.doubleString(WhaleData.speciesOptions()))
+    @{
+        val v = WhaleData.speciesOptions();
+        v.add(0, "");
+        helper.select(searchForm("Species"), _root_.utils.FormUtils.doubleString(v))
+    }
     @helper.inputText(searchForm("time"), Symbol("_label") -> "Date & Time:")
     @optionBuildSpecies(species: String) = {
     <option value="@species" >@species</option>
     }
     <input type="submit" value="Search">
 </form>
-
-<form action="@routes.SearchController.search()" method="get">
+<form action="@routes.SearchController.search()" method="get" class="center">
     <input type="submit" value="Reset">
 </form>
 </div>
+
