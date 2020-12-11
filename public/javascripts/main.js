@@ -23,8 +23,10 @@ function doSampleJson(url, tag) {
 }
 
 function validateWhaleInput(tag){
-    if (parseInt($(tag).val()) >= 0){
+    if (parseInt($(tag).val()) >= 0 && isFinite($(tag).val())){
         $('#whale_submit').removeAttr('disabled');
+    }else{
+        $('#whale_submit').attr('disabled','disabled')
     }
 }
 
