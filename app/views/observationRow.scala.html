@@ -1,8 +1,17 @@
+@import java.time.format.DateTimeFormatter
+@import java.time.format.FormatStyle
 @(observation: Observation)
 
 <tr onclick="redirect('/observation/@observation.getId')">
     <td>
-        @observation.getTime.toLocalDate
+        @{
+            try {
+                val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
+                formatter.format(observation.getTime)
+            } catch{
+            case e: Exception => e.getMessage
+            }
+        }
     </td>
     <td>
         @observation.getWhales.size

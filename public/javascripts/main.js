@@ -78,11 +78,19 @@ function filterInt(value) {
 function validateWhaleInput(tag){
     if (parseInt(filterInt($(tag).val())) >= 0){
         $('#whale_submit').removeAttr('disabled');
+        return false;
     } else {
         $('#whale_submit').attr('disabled', 'disabled');
+        return true;
     }
 }
 
 function bindValidator(tag){
     $(tag).keyup(() => validateWhaleInput(tag));
+    $('form').keypress(function(e){
+        if(e.which === 13){
+            return parseInt(filterInt($(tag).val())) >= 0;
+        }
+        return true;
+    });
 }

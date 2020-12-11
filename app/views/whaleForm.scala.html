@@ -23,7 +23,7 @@
         <div class="image-wrapper">
             <img src="/assets/images/unknown.png"  alt="unknown whale"/>
         </div>
-        <form action="@routes.WhaleController.handleResult(obsId = observation.getId)" method="POST">
+        <form action="@routes.WhaleController.handleResult(obsId = observation.getId)" onsubmit="validateWhaleInput('#estimatedWeight')" method="POST">
             @helper.CSRF.formField
             <h4 class="whale_info">
                 <div>Species:
@@ -32,7 +32,7 @@
                     </select>
                 </div></h4>
             <h5 class="whale_info">
-                <div>Estimated Weight: <input type="text" id="estimatedWeight" name="estimatedWeight" placeholder="Min. 0" value=""> kg </div>
+                <div>Estimated Weight: <input type="text" id="estimatedWeight" min=0 name="estimatedWeight" placeholder="Min. 0" value=""> kg </div>
             </h5>
             <h6 class="whale_info">
                 <div>Gender:

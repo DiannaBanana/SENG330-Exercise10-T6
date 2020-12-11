@@ -1,7 +1,7 @@
 
 @(searchForm: Form[SearchData])(implicit request: Http.Request, messages: play.i18n.Messages)
 
-<form action="@routes.SearchController.search()" method="post">
+<form action="@routes.SearchController.search()" method="post" class="center">
     @helper.CSRF.formField
     @helper.select(searchForm("Species"), _root_.utils.FormUtils.doubleString(WhaleData.speciesOptions()))
     @helper.inputText(searchForm("time"), Symbol("type") -> "datetime-local", Symbol("_label") -> "Date & Time:")
