@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-public class SimpleHashStore implements ObservationStore, WhaleStore, SearchStore{
+public class SimpleHashStore implements ObservationStore, WhaleStore{
   private final HashMap<Long, Observation> observations = new HashMap<>();
   private final HashMap<Long, Observation> searchResult = new HashMap<>();
 
@@ -35,22 +35,6 @@ public class SimpleHashStore implements ObservationStore, WhaleStore, SearchStor
   public void removeObservationById(long id) {
     observations.remove(id);
   }
-
-  @Override
-  public List<Observation> getSearchResult() {
-    return new ArrayList<>(searchResult.values());
-  }
-
-  @Override
-  public void addSearchToStore(Observation toAdd) {
-    searchResult.put(toAdd.getId(), toAdd);
-  }
-
-  @Override
-  public void clearSearch() {
-    searchResult.clear();
-  }
-
 
   @Override
   public List<Whale> getAllWhales() {
