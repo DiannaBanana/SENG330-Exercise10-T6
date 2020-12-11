@@ -11,34 +11,18 @@
     </p>
 
     <script>
-            function process_1()
+            function process()
             {
                 var url = "http://localhost:9000/search/" + document.getElementById("url").value;
                 location.href = url;
                 return false;
             }
-
-            function process_2()
-            {
-                var url = "http://localhost:9000/search/" + document.getElementById("url").value;
-                location.href = url
-                return false;
-            }
     </script>
 
-    <form onSubmit="return process_1();">
+    <form onSubmit="return process();">
         Species: <input type="text" name="url" id="url">
         <input type="submit" value="go">
     </form>
-
-
-    <form onSubmit="return process_2();">
-        Time: <input type="text" name="url" id="url">
-        <input type="submit" value="go">
-    </form>
-
-
-
 }
 
 @views.html.htmlHeader(section(groupName, observations))
