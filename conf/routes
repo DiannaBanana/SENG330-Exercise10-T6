@@ -13,8 +13,10 @@ POST    /observation                    controllers.ObservationController.create
 GET     /observation/:obsId/remove_whale/:whaleId   controllers.WhaleController.removeWhale(obsId: Long, whaleId: Long)
 GET     /whales                         controllers.WhaleAPI.listWhales()
 GET     /credits                        controllers.Driver.credits()
-GET     /search                         controllers.SearchController.index(request: Request)
-POST    /search                         controllers.SearchController.search(request: Request)
+GET     /search                         controllers.Driver.search()
+#GET     /search/:obsId                  controllers.SearchController.searchObservation(request: Request, obsId: Long)
+GET     /search/:species                controllers.SearchController.searchObservationBySpecies(request: Request, species: String)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file   controllers.Assets.versioned(path="/public", file: Asset)
