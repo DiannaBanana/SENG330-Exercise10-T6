@@ -1,0 +1,10 @@
+
+@(searchForm: Form[SearchData])(implicit request: Http.Request, messages: play.i18n.Messages)
+
+<form action="@routes.SearchController.search()" method="post">
+    @helper.CSRF.formField
+    @helper.inputText(searchForm("species"), Symbol("_label") -> "Species:")
+    @helper.inputText(searchForm("time"), Symbol("type") -> "datetime-local", Symbol("_label") -> "Date & Time:")
+
+    <input type="submit" value="go">
+</form>

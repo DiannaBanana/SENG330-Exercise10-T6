@@ -29,4 +29,14 @@ public class DriverTest extends WithApplication {
         assertEquals(OK, result.status());
     }
 
+    @Test
+    public void testCredits() {
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(GET)
+                .uri("/credits");
+
+        Result result = route(app, request);
+        assertEquals(OK, result.status());
+    }
+
 }

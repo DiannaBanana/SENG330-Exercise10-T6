@@ -1,14 +1,18 @@
 @import java.util
 
-@(observations: util.List[Observation])
-<table id="observationTable" class="observation-table sortable center">
+@(searches: util.List[Observation])
+
+<table id="observationTable" class="observation-table sortable">
     <thead>
         <tr>
-            <th data-sorter="shortDate" >
+            <th>
+                Index
+            </th>
+            <th>
                 Date
             </th>
             <th>
-                Whales Observed
+                Pod Size
             </th>
             <th>
                 Location
@@ -16,7 +20,7 @@
         </tr>
     </thead>
     <tbody>
-        @observations.map(ob => {
+        @searches.map(ob => {
             views.html.observationRow(ob)
         })
     </tbody>

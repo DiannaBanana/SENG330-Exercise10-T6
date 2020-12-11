@@ -18,5 +18,4 @@ public class WhaleModel {
   }
 
   public WhaleStore getWhaleStore(){return whaleStore;}
-
 }

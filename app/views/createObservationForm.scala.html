@@ -9,7 +9,8 @@
     @helper.form(routes.ObservationController.createObservation()) {
     @helper.CSRF.formField
     @helper.inputText(whaleForm("location"),  Symbol("_label") -> "Location Where the Whales Were Seen")
-    @helper.inputText(whaleForm("time"), Symbol("_label") -> "Date & Time of Sighting", Symbol("type") -> "datetime-local")
+    @helper.inputText(whaleForm("time"), Symbol("class") -> "datetimepicker",
+        Symbol("_label") -> "Date & Time of Sighting")
     <input type="submit"/>
     }
 }</div>

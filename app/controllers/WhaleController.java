@@ -14,8 +14,7 @@ import play.mvc.Result;
 import javax.inject.Inject;
 import java.util.Optional;
 
-
-import static play.mvc.Http.MimeTypes.*;
+import static play.mvc.Http.MimeTypes.JSON;
 
 public class WhaleController extends Controller {
   private FormFactory formFactory;
@@ -64,8 +63,9 @@ public class WhaleController extends Controller {
     if (request.acceptedTypes().stream().map(MediaRange::toString).anyMatch(x -> x.equalsIgnoreCase(JSON))) {
       return new WhaleAPI(activeModel).listWhales(request);
     } else {
-      return ok("This should map to search");
+      return redirect(routes.SearchController.search());
     }
   }
+
 
 }

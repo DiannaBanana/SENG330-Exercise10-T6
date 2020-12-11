@@ -2,12 +2,15 @@
 
 <tr onclick="redirect('/observation/@observation.getId')">
     <td>
-        @observation.getTime.toLocalDate
+    @observation.getId
     </td>
     <td>
-        @observation.getWhales.size
+    @observation.getTime
     </td>
     <td>
-        @observation.getLocation
+    @observation.getWhales.size
+    </td>
+    <td>
+    @observation.getLocation
     </td>
 </tr>
