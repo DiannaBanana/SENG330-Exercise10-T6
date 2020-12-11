@@ -1,0 +1,49 @@
+@import play.mvc.Http.MimeTypes._
+@()
+
+
+@section() = {
+    <h1>Using the REST API</h1>
+
+    In order to provide a useful functionality to expose the results of the Whale Watchers app for
+    external analysis there is an API to get information on the observed whales in JSON format.
+
+    Below are a few examples of how to use the api.
+    The response will be updated dynamically to show the live results.
+    A well formatted request only accepts a json response and contains no parameters.
+
+    <div class="request_info">
+    <span class="response">Status: 200</span>
+        <h4>Request</h4>
+
+        <code>
+            Accepts: [@JSON]<br />
+            GET /whales
+        </code>
+        <h4>Response</h4>
+        <code id="valid_json" >
+        </code>
+    </div>
+
+    Error 422 is thrown if any parameters are specified
+    <div class="request_info">
+        <span class="response">Status: 422</span>
+        <h4>Request</h4>
+        <code>
+            Accepts: [@JSON]
+            GET /whales?any=parameters
+        </code>
+        <h4>Response</h4>
+        <code id="invalid_json">
+        </code>
+    </div>
+
+    <script>
+            $(document).ready(function () {
+                doSampleJson('/whales', '#valid_json');
+                doSampleJson('/whales?any=parameter', '#invalid_json');
+            });
+    </script>
+}
+
+@htmlHeader(section())
