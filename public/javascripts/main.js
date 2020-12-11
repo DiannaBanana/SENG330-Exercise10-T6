@@ -22,9 +22,19 @@ function doSampleJson(url, tag) {
     }).fail((data) => {$(tag).text(JSON.stringify(data.responseJSON));});
 }
 
+function filterInt(value) {
+    if (/^[-+]?(\d+|Infinity)$/.test(value)) {
+        return Number(value)
+    } else {
+        return NaN
+    }
+}
+
 function validateWhaleInput(tag){
-    if (parseInt($(tag).val()) >= 0){
+    if (parseInt(filterInt($(tag).val())) >= 0){
         $('#whale_submit').removeAttr('disabled');
+    } else {
+        $('#whale_submit').attr('disabled', 'disabled');
     }
 }
 
