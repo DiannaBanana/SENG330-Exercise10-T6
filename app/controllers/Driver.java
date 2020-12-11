@@ -29,9 +29,6 @@ public class Driver extends Controller {
         return ok(views.html.index.render("Group 6", activeModel.getObservationStore().getObservations()));
     }
 
-    public Result search() {
-        return ok(views.html.search.render("Group 6", activeModel.getObservationStore().getObservations()));
-    }
 
     public Result credits() {
         return ok(views.html.credits.render());

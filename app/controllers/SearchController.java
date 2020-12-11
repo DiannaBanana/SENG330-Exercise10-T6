@@ -1,6 +1,5 @@
 package controllers;
 
-import models.Observation;
 import models.WhaleModel;
 import play.data.Form;
 import play.data.FormFactory;
@@ -10,35 +9,39 @@ import play.mvc.Http;
 import play.mvc.Result;
 
 import javax.inject.Inject;
-import java.util.Optional;
 
 public class SearchController extends Controller {
 
     private final FormFactory formFactory;
     private final MessagesApi me;
-    private final Form<ObservationData> observationDataForm;
-    private final Form<WhaleData> whaleDataForm;
+    private final Form<SearchData> searchDataForm;
     private final WhaleModel activeModel;
 
 
     @Inject
     public SearchController(FormFactory f, MessagesApi messagesApi, WhaleModel model) {
         formFactory = f;
-        observationDataForm = formFactory.form(ObservationData.class);
-        whaleDataForm = formFactory.form(WhaleData.class);
+        searchDataForm = formFactory.form(SearchData.class);
         me = messagesApi;
         activeModel = model;
     }
 
-    public Result searchObservation(Http.Request r, Long obsId) {
-        Optional<Observation> observation = activeModel.getObservationStore().getObservationById(obsId);
 
-        if (observation.isPresent()) {
-            return ok(views.html.observationDetail.render(observation.get(), whaleDataForm, r, me.preferred(r)));
-        }
-
-        return redirect(routes.Driver.index());
+    public Result index(Http.Request r) {
+        return ok(views.html.search.render(searchDataForm, r, me.preferred(r)));
     }
+
+    public Result search(Http.Request r){
+        Form<SearchData> filledForm = searchDataForm.bindFromRequest(r);
+        try {
+            SearchData s = filledForm.get();
+            return ok(s.toString());
+        } catch (Exception e){
+            e.printStackTrace();
+            return ok();
+        }
+    }
+
 
 }
 
