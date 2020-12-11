@@ -1,5 +1,7 @@
 package controllers;
 
+import models.Whale;
+
 import java.time.LocalDateTime;
 
 public class SearchData {
@@ -10,6 +12,10 @@ public class SearchData {
 
     public String getSpecies() {
         return species;
+    }
+
+    public Whale.Species parseSpecies(){
+        return Whale.Species.fromString(species);
     }
 
     public void setSpecies(String species) {

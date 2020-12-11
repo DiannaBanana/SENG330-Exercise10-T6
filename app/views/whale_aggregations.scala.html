@@ -1,9 +1,14 @@
 @import java.util
 
-@(observations: util.List[Observation])
+@import java.util.function.BiPredicate
+@(observations: util.List[Observation], filterFunction: BiPredicate[Observation, Whale], searchForm: Form[SearchData])(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @section(observations: util.List[Observation]) = {
-    @whaleTable(observations)
+    @search(searchForm)
+
+    @if(!observations.isEmpty) {
+        @whaleTable(observations, filterFunction)
+    }
 }
 
-    @htmlHeader(section(observations))
+@htmlHeader(section(observations))

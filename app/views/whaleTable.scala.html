@@ -1,10 +1,9 @@
 @import java.util
 
-@import java.util.concurrent.TimeUnit
-@import java.time.temporal.TemporalUnit
 @import java.time.format.DateTimeFormatter
 @import java.time.format.FormatStyle
-@(observations: util.List[Observation])
+@import java.util.function.BiPredicate
+@(observations: util.List[Observation], filter: BiPredicate[Observation, Whale])
 
 @row(observation: Observation, whale: Whale)={
     <tr onclick="redirect('/observation/@observation.getId')">
@@ -20,7 +19,7 @@
         <td>
             @{
                 try {
-                    val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)
+                    val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
                     formatter.format(observation.getTime)
                 } catch{
                     case e: Exception => e.getMessage
@@ -54,7 +53,11 @@
         </tr>
     </thead>
     <tbody>
-        @observations.flatMap(ob => ob.getWhales.map(w => (ob, w))).map(tup => (row _).tupled(tup))
+        @{
+            observations.flatMap(ob => ob.getWhales.map(w => (ob, w)))
+                    .filter(tup => filter.test(tup._1, tup._2))
+                    .map(tup => (row _).tupled(tup))
+        }
     </tbody>
 
 </table>
