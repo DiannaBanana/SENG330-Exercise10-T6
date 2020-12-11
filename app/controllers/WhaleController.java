@@ -13,6 +13,9 @@ import play.mvc.Result;
 import javax.inject.Inject;
 import java.util.Optional;
 
+
+import static play.mvc.Http.MimeTypes.*;
+
 public class WhaleController extends Controller {
   private FormFactory formFactory;
   private MessagesApi messages;
@@ -54,6 +57,16 @@ public class WhaleController extends Controller {
     observationOptional.ifPresent(observation -> observation.getWhales().removeIf(w -> w.getId().equals(whaleId)));
 
     return redirect(routes.ObservationController.showObservation(obsId));
+  }
+
+  public Result manageRequestType(Http.Request request){
+    System.out.println(request.acceptedTypes());
+
+    if (request.accepts(JSON) && !request.accepts(HTML)){
+      return new WhaleAPI(activeModel).listWhales();
+    } else {
+      return ok("This should map to search");
+    }
   }
 
 }

@@ -65,9 +65,11 @@ public class Whale {
   }
 
   public enum Gender {
-    MALE,
-    FEMALE,
-    UNKNOWN;
+    MALE ,
+    FEMALE ,
+    UNKNOWN ;
+
+
 
     public static Gender fromString(String gender) {
       if (gender.equalsIgnoreCase("m") || gender.equalsIgnoreCase("male")) {

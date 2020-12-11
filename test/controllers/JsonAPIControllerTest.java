@@ -43,7 +43,8 @@ public class JsonAPIControllerTest extends WithApplication {
         cleanup();
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
-                .uri("/whales");
+                .uri("/whales")
+                .header("accept", JSON);
         Result result = route(app, request);
 
         assertEquals(JSON, result.contentType().get());
@@ -59,7 +60,8 @@ public class JsonAPIControllerTest extends WithApplication {
         cleanup();
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
-                .uri("/whales");
+                .uri("/whales")
+                .header("accept", JSON);;
 
         ObservationBuilder ob = new ObservationBuilder()
                 .observedAt(LocalDateTime.of(2000, 12, 5, 4, 1))
@@ -81,7 +83,8 @@ public class JsonAPIControllerTest extends WithApplication {
         cleanup();
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
-                .uri("/whales");
+                .uri("/whales")
+                .header("accept", JSON);;
 
         ObservationBuilder ob = new ObservationBuilder()
                 .observedAt(LocalDateTime.of(2000, 12, 5, 4, 1))
