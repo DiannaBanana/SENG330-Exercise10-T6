@@ -2,13 +2,15 @@
 @(observationForm: Form[ObservationData])(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @section(whaleForm: Form[ObservationData]) = {
+<div class="obs_panel center">
+    <h2>Create Observation</h2>
     Before adding whales, please provide the location where the whales were seen and the time of the observation.
-    <br />
+    <br /><hr/>
     @helper.form(routes.ObservationController.createObservation()) {
     @helper.CSRF.formField
     @helper.inputText(whaleForm("location"),  Symbol("_label") -> "Location Where the Whales Were Seen")
     @helper.inputText(whaleForm("time"), Symbol("_label") -> "Date & Time of Sighting", Symbol("type") -> "datetime-local")
     <input type="submit"/>
     }
-}
+}</div>
 @htmlHeader(section(observationForm))

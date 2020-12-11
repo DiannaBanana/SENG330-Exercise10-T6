@@ -26,8 +26,11 @@
 }
 
 #sidebar-wrapper .sidebar-heading {
+  font-family: Papyrus;
+  text-decoration: underline;
+  text-align: center;
   padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 #sidebar-wrapper .list-group {
@@ -35,6 +38,10 @@
 }
 
 #page-content-wrapper {
+  background-image: url("../images/sea.jpg");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
   min-width: 100vw;
 }
 
