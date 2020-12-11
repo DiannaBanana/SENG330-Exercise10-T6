@@ -1,10 +1,13 @@
 package controllers;
 
+import models.Observation;
+import models.Whale;
 import models.WhaleModel;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -32,6 +35,16 @@ public class Driver extends Controller {
 
     public Result credits() {
         return ok(views.html.credits.render());
+    }
+
+    public Result generateFakeData(){
+        for (int i = 0; i < 20; i++) {
+            Observation temp = new Observation(LocalDateTime.now(), "Here" + i);
+
+            temp.getWhales().add(new Whale(Whale.Species.values()[i%6], 10000, Whale.Gender.values()[i%3]));
+            activeModel.getObservationStore().addObservation(temp);
+        }
+        return redirect(routes.Driver.index());
     }
     
 
