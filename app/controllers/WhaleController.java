@@ -3,6 +3,7 @@ package controllers;
 import models.Observation;
 import models.Whale;
 import models.WhaleModel;
+import play.api.http.MediaRange;
 import play.data.Form;
 import play.data.FormFactory;
 import play.i18n.MessagesApi;
@@ -60,10 +61,8 @@ public class WhaleController extends Controller {
   }
 
   public Result manageRequestType(Http.Request request){
-    System.out.println(request.acceptedTypes());
-
-    if (request.accepts(JSON) && !request.accepts(HTML)){
-      return new WhaleAPI(activeModel).listWhales();
+    if (request.acceptedTypes().stream().map(MediaRange::toString).anyMatch(x -> x.equalsIgnoreCase(JSON))) {
+      return new WhaleAPI(activeModel).listWhales(request);
     } else {
       return ok("This should map to search");
     }

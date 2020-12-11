@@ -15,3 +15,9 @@ function init() {
         $("#wrapper").toggleClass("toggled");
     });
 }
+
+function doSampleJson(url, tag) {
+    $.getJSON( url, function( data ) {
+        $(tag).text(JSON.stringify(data));
+    }).fail((data) => {$(tag).text(JSON.stringify(data.responseJSON));});
+}

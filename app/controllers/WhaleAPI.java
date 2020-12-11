@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Whale;
 import models.WhaleModel;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import utils.Util;
 
@@ -19,10 +20,17 @@ public class WhaleAPI extends Controller{
         this.activeModel = model;
     }
 
-   public Result listWhales(){
+   public Result listWhales(Http.Request request){
+        if (request.queryString().size() > 0){
+            return status(422, Util.createResponse("Unknown get parameters", false));
+        }
        List<Whale> listOfWhales = activeModel.getWhaleStore().getAllWhales();
        ObjectMapper mapper = new ObjectMapper();
        JsonNode jsonData = mapper.convertValue(listOfWhales, JsonNode.class);
        return ok(Util.createResponse(jsonData, true));
+   }
+
+   public Result guide(){
+        return ok(views.html.api_info.render());
    }
 }

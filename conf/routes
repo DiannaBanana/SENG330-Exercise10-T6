@@ -13,6 +13,7 @@ POST    /observation                    controllers.ObservationController.create
 GET     /observation/:obsId/remove_whale/:whaleId   controllers.WhaleController.removeWhale(obsId: Long, whaleId: Long)
 GET     /whales                         controllers.WhaleController.manageRequestType(request: Request)
 GET     /credits                        controllers.Driver.credits()
+GET     /api_guide                      controllers.WhaleAPI.guide()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file   controllers.Assets.versioned(path="/public", file: Asset)
