@@ -8,8 +8,6 @@ import java.util.Optional;
 
 public class SimpleHashStore implements ObservationStore, WhaleStore{
   private final HashMap<Long, Observation> observations = new HashMap<>();
-  private final HashMap<Long, Observation> searchResult = new HashMap<>();
-
 
   @Override
   public Optional<Observation> getObservationById(long id) {

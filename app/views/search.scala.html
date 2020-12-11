@@ -3,8 +3,13 @@
 
 <form action="@routes.SearchController.search()" method="post">
     @helper.CSRF.formField
-    @helper.inputText(searchForm("species"), Symbol("_label") -> "Species:")
-    @helper.inputText(searchForm("time"), Symbol("_label") -> "Date & Time:")
-
-    <input type="submit" value="go">
+    @helper.select(searchForm("Species"), _root_.utils.FormUtils.doubleString(WhaleData.speciesOptions()))
+    @helper.inputText(searchForm("time"), Symbol("type") -> "datetime-local", Symbol("_label") -> "Date & Time:")
+    @optionBuildSpecies(species: String) = {
+    <option value="@species" >@species</option>
+    }
+    <input type="submit" value="Search">
+</form>
+<form action="@routes.SearchController.search()" method="get">
+    <input type="submit" value="Reset">
 </form>
