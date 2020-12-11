@@ -15,7 +15,6 @@ import play.test.Helpers;
 import play.test.WithApplication;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import static org.junit.Assert.*;
 import static play.mvc.Http.MimeTypes.JSON;
@@ -44,8 +43,7 @@ public class JsonAPIControllerTest extends WithApplication {
         cleanup();
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
-                .uri("/whales")
-                .header("accept", JSON);
+                .uri("/whales");
         Result result = route(app, request);
 
         assertEquals(JSON, result.contentType().get());
@@ -61,12 +59,12 @@ public class JsonAPIControllerTest extends WithApplication {
         cleanup();
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
-                .uri("/whales")
-                .header("accept", List.of(JSON, "*/*"));
+                .uri("/whales");
 
         ObservationBuilder ob = new ObservationBuilder()
                 .observedAt(LocalDateTime.of(2000, 12, 5, 4, 1))
                 .atLocation("UVic").withNWhalesSpecies(5);
+
 
         model.getObservationStore().addObservationToStore(ob.build());
         Result result = route(app, request);
@@ -83,8 +81,7 @@ public class JsonAPIControllerTest extends WithApplication {
         cleanup();
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
-                .uri("/whales")
-                .header("accept", JSON);
+                .uri("/whales");
 
         ObservationBuilder ob = new ObservationBuilder()
                 .observedAt(LocalDateTime.of(2000, 12, 5, 4, 1))
@@ -107,27 +104,6 @@ public class JsonAPIControllerTest extends WithApplication {
 
         //5+1 for all whales total
         assertEquals(6, jsonData.get("body").size());
-    }
-
-
-    @Test
-    public void testWithUnknownParameter() throws JsonProcessingException {
-        cleanup();
-        Http.RequestBuilder request = new Http.RequestBuilder()
-                .method(GET)
-                .uri("/whales?species=orca")
-                .header("accept", JSON);
-
-        Result result = route(app, request);
-
-        assertEquals(422, result.status());
-
-        System.out.println(Helpers.contentAsString(result));
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonData = mapper.readValue(Helpers.contentAsString(result), JsonNode.class);
-        assertFalse(jsonData.get("isSuccessful").asBoolean());
-
     }
 
 
