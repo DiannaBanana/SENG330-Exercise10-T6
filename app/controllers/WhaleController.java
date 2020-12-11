@@ -35,9 +35,7 @@ public class WhaleController extends Controller {
   public Result handleResult(Http.Request request, Long obsId) {
     Form<WhaleData> filledForm = form.bindFromRequest(request);
 
-    if (filledForm.hasErrors()) {
-      return ok(filledForm.errorsAsJson());
-    } else {
+    if (!filledForm.hasErrors()) {
       try {
         WhaleData temp = filledForm.get();
         Whale whale = new Whale(temp.getSpecies(), temp.getEstimatedWeight(), temp.getGender());
@@ -49,6 +47,8 @@ public class WhaleController extends Controller {
         e.printStackTrace();
       }
       return redirect(routes.ObservationController.showObservation(obsId));
+    } else {
+      return ok(filledForm.errorsAsJson());
     }
   }
 
