@@ -40,6 +40,16 @@ public class ObservationController extends Controller {
         return redirect(routes.Driver.index());
     }
 
+    public Result searchObservation(Http.Request r, Long obsId) {
+        Optional<Observation> observation = activeModel.getObservationStore().getObservationById(obsId);
+
+        if (observation.isPresent()) {
+            return ok(views.html.observationDetail.render(observation.get(), whaleDataForm, r, me.preferred(r)));
+        }
+
+        return redirect(routes.Driver.index());
+    }
+
     public Result createObservation(Http.Request r) {
         Form<ObservationData> filledForm = observationDataForm.bindFromRequest(r);
 

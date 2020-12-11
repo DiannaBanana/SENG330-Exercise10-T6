@@ -14,7 +14,7 @@ GET     /observation/:obsId/remove_whale/:whaleId   controllers.WhaleController.
 GET     /whales                         controllers.WhaleAPI.listWhales()
 GET     /credits                        controllers.Driver.credits()
 GET     /search                         controllers.Driver.search()
-GET     /search/:keyword                   controllers.SearchController.searchObservation(request: Request, keyword: String)
+GET     /result/:keyword                controllers.SearchController.searchObservation(request: Request, keyword: String)
 
 
 # Map static resources from the /public folder to the /assets URL path

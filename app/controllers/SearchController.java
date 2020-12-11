@@ -39,6 +39,7 @@ public class SearchController extends Controller {
 
     public Result searchObservation(Http.Request r, String keyword) {
         int obsId = 0;
+        activeModel.getSearchStore().clearSearch();
         List<Observation> obs= activeModel.getObservationStore().getObservations();
         List<Integer> matchId = new ArrayList<>();
         if(keyword.matches("\\d{4}-\\d{2}-\\d{2}")){
@@ -49,6 +50,7 @@ public class SearchController extends Controller {
                     System.out.println(obs.get(k).getTime().toLocalDate());
                     obsId=k;
                     matchId.add(k);
+                    activeModel.getSearchStore().addSearchToStore(obs.get(k));
                 }
             }
         }else{
@@ -60,18 +62,21 @@ public class SearchController extends Controller {
                     if(whale_list.get(j).getSpecies().equalsIgnoreCase(keyword)){
                         obsId = i;
                         matchId.add(i);
+                        activeModel.getSearchStore().addSearchToStore(obs.get(i));
                     }
                 }
             }
         }
 
-        Optional<Observation> observation = activeModel.getObservationStore().getObservationById(obsId);
+//        Optional<Observation> observation = activeModel.getObservationStore().getObservationById(obsId);
+//
+//        if (observation.isPresent()) {
+//            return ok(views.html.observationDetail.render(observation.get(), whaleDataForm, r, me.preferred(r)));
+//        }
+//
+//        return redirect(routes.Driver.index());
+        return ok(views.html.result.render("Group 6", activeModel.getSearchStore().getSearchResult()));
 
-        if (observation.isPresent()) {
-            return ok(views.html.observationDetail.render(observation.get(), whaleDataForm, r, me.preferred(r)));
-        }
-
-        return redirect(routes.Driver.index());
     }
 }
 
