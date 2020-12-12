@@ -31,14 +31,13 @@ public class WhaleController extends Controller {
   }
 
 
-  public Result handleResult(Http.Request request, Long obsId) {
+  public Result addWhale(Http.Request request, Long obsId) {
     Form<WhaleData> filledForm = form.bindFromRequest(request);
 
     if (!filledForm.hasErrors()) {
       try {
         WhaleData temp = filledForm.get();
         Whale whale = new Whale(temp.getSpecies(), temp.getEstimatedWeight(), temp.getGender());
-
 
         Optional<Observation> obsWrapper = activeModel.getObservationStore().getObservationById(obsId);
         obsWrapper.ifPresent(observation -> observation.getWhales().add(whale));
@@ -77,7 +76,7 @@ public class WhaleController extends Controller {
     //This is required because most browsers accept anything */* so a call to <code>request.accepts()</code>
     //always is true
     if (request.acceptedTypes().stream().map(MediaRange::toString).anyMatch(x -> x.equalsIgnoreCase(JSON))) {
-      return new WhaleAPI(activeModel).listWhales(request);
+      return new WhaleAPIController(activeModel).listWhales(request);
     } else {
       return redirect(routes.SearchController.search());
     }

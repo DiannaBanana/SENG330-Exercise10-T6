@@ -14,12 +14,12 @@ import utils.Util;
 import javax.inject.Inject;
 import java.util.List;
 
-public class WhaleAPI extends Controller{
+public class WhaleAPIController extends Controller{
     private final WhaleModel activeModel;
     private final Logger accessLogger = LoggerFactory.getLogger("requests");
 
     @Inject
-    public WhaleAPI(WhaleModel model) {
+    public WhaleAPIController(WhaleModel model) {
         this.activeModel = model;
     }
 
