@@ -34,7 +34,10 @@ then be mapped into a Twirl template which uses the appropriate file to visually
 
 
 
-
+We decided to use [Bootstrap](https://getbootstrap.com/ to enhance the look and feel of our page. The side navigation
+pane allows users to quickly find where they need to go. The folding feature is very useful on mobile where horizontal
+screen space is very limited. The use of CSS @Media queries helped us to build more responsive designs with smaller
+sized cards to fit on mobile devices.
 
 
 jQuery was used to enhance the functionality of the web app by adding plugins to the front end to aid use experience and error

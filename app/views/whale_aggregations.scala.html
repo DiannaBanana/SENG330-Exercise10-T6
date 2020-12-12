@@ -7,7 +7,7 @@
     @search(searchForm)
 
 
-    @if(!observations.isEmpty) {
+    @if(observations.flatMap(ob => ob.getWhales).nonEmpty) {
         <p>The columns in the table below are sortable. Click anywhere on the blue heading to sort whales
             using the data in that column. Clicking the same header again will reverse the sorting direction.
             Clicking on a row will take you to the observation that the whale belongs to.
