@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Whale {
 
-  private static long numberWhales = 0;
+  protected static long numberWhales = 0;
 
   private final Long id;
   private Species species;
@@ -41,6 +41,10 @@ public class Whale {
 
   public Long getId() {
     return id;
+  }
+
+  public static void setNumberWhales(long numberWhales) {
+    Whale.numberWhales = numberWhales;
   }
 
   public Species getSpecies() {

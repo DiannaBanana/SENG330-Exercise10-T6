@@ -20,4 +20,15 @@ public class WhaleTest {
         assertEquals(w1, w1);
     }
 
+    @Test
+    public void idIncrements(){
+        Whale w = null;
+        w.setNumberWhales(0);
+        for (int i = 0; i < 5; i++) {
+            w = new Whale("beluga", 300, "f");
+            System.out.println(w.getId());
+        }
+        assertEquals(4, w.getId().longValue());
+    }
+
 }

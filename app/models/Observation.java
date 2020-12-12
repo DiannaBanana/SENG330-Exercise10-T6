@@ -6,7 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Observation {
-  private static long observationCount = 0;
+
+  protected static long observationCount = 0;
 
   private final Set<Whale> whales = new HashSet<>();
   private final LocalDateTime time;
@@ -26,9 +27,12 @@ public class Observation {
     this.id = observationCount++;
   }
 
-
   public Long getId() {
     return id;
+  }
+
+  public static void setObservationCount(long observationCount) {
+    Observation.observationCount = observationCount;
   }
 
   public String getLocation() {

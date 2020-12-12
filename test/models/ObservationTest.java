@@ -5,11 +5,9 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.*;
 
 public class ObservationTest {
-
 
     @Test
     public void testThrowsOnNull(){
@@ -21,8 +19,9 @@ public class ObservationTest {
     @Test
     public void idIncrements(){
         Observation o = null;
+        o.setObservationCount(0);
         for (int i = 0; i < 5; i++) {
-            o = new Observation(LocalDateTime.now(), "");
+            o = new Observation(LocalDateTime.now(), "Hawaii");
         }
         assertEquals(4, o.getId().longValue());
     }
@@ -36,4 +35,16 @@ public class ObservationTest {
 
         assertEquals(1, o.getWhales().size());
     }
+
+    @Test
+    public void addMultipleWhales(){
+        Whale w = new Whale("fin", 150, "f");
+        Whale x = new Whale("beluga", 300, "m");
+        Observation obs = new ObservationBuilder().observedAt(LocalDateTime.now()).atLocation("here").build();
+        obs.getWhales().add(w);
+        obs.getWhales().add(x);
+
+        assertEquals(2, obs.getWhales().size());
+    }
+
 }

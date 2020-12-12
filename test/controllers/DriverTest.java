@@ -39,4 +39,33 @@ public class DriverTest extends WithApplication {
         assertEquals(OK, result.status());
     }
 
+    @Test
+    public void testAddObservationPage() {
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(GET)
+                .uri("/observation");
+
+        Result result = route(app, request);
+        assertEquals(OK, result.status());
+    }
+
+    @Test
+    public void testWhaleAnalytics() {
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(GET)
+                .uri("/search");
+
+        Result result = route(app, request);
+        assertEquals(OK, result.status());
+    }
+
+    @Test
+    public void testAPIGuidePage() {
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(GET)
+                .uri("/api_guide");
+
+        Result result = route(app, request);
+        assertEquals(OK, result.status());
+    }
 }
