@@ -33,19 +33,20 @@ browser support for date entry. One of the primary reasons to use a plugin inste
 was to ensure that the dates would be returned to the server in a reliable format. This means that we can always expect
 dates in YYYY/MM/DD HH:MM format and parse them accordingly.
 
-Javascript key event handling was a key component of validating user input. Particularily for the Whale form. For the 
+Javascript key event handling was a key component of validating user input. Particularly for the Whale form. For the 
 whale entry form, drop down menus were used to ensure that the input to the system would match one of the enums in the
 model. However, for the estimated weight, we wanted to ensure that the value was greater than or equal to 0. Unlike the
 observation for which has room to expand vertically and print error messages, there was no space within a Whale card.
 As such, on keypress the field is validated. If the field only contains a positive integer then the submit button
-is activated. If it does not, then the field is greyed out until it is valid. One interesting bug occured when a user
+is activated. If it does not, then the field is greyed out until it is valid. One interesting bug occurred when a user
 would type a letter and press enter simultaneously. In this case, we added extra javascript before the form could submit.
-This ensures that even if an extraneous submit event fires with bad text it will be rejected and the button will be greyed out.
+This ensures that even if an extraneous submit event fires with bad text it will be rejected, and the button will be greyed out.
 
 
 
 ## Consequences
 
 Using jQuery makes it much easier to have external plugins add functionality to the website. In the future, we would like
-to add google maps API functionality to the locations, so that users locations can be more easily coallatted into useful
-results by making queries such as filtering by radius.
+to add google maps API functionality to the locations, so that users locations can be more easily collated into useful
+results by making queries such as filtering by a radius. Using form validation on the client side reduces the need for
+time-consuming server calls, especially in the cases where clients may be on mobile with low data rates.
