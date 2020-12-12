@@ -33,7 +33,12 @@ public class SearchData {
     }
 
     public boolean isDateValid(){
-        return !time.equals("____/__/__ __:__");
+        try{
+            LocalDateTime.parse(time, formatter);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 
     public LocalDateTime getParsedTime(){
