@@ -5,7 +5,7 @@
     <h2><b>Whale Search</b></h2>
     Enter the whale species and/or date that you would like to search for.
     <br /><hr/>
-<form action="@routes.SearchController.search()" method="post" class="center">
+<form action="@routes.SearchController.search()" class="search_fields">
     @helper.CSRF.formField
     @{
         val v = WhaleData.speciesOptions();
@@ -16,9 +16,9 @@
     @optionBuildSpecies(species: String) = {
     <option value="@species" >@species</option>
     }
-    <input type="submit" value="Search">
+    <input type="submit" value="Search" id="search" formmethod="post">
+
+    <input type="submit" value="Reset" id="reset" formmethod="get">
 </form>
-<form action="@routes.SearchController.search()" method="get" class="center">
-    <input type="submit" value="Reset">
-</form>
+
 </div>
