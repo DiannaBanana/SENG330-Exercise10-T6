@@ -20,6 +20,7 @@ with regard to the required deliverable as well as a commit to the final version
 
 Please note that for deliverable #8, the links are for each ADR, respectively.
 Please also note that for required deliverable #1, the sha1 codes are for the bonus of hosting the application on Heroku. 
+Please also note that we implemented the logging bonus, and the code for this is implemented throughout the app in order to log all relevant events.
 
 [Heroku]: https://github.com/SENG330/exercise-10-ex8_team6/blob/0aae0bdbf50dd9694e790e5065454b847d6ed8fe/conf/reference.conf#L1
 [Architecture]: https://github.com/SENG330/exercise-10-ex8_team6/blob/main/Architecture_ADR.md#architecture-of-app
