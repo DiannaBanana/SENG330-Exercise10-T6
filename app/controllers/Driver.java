@@ -3,6 +3,8 @@ package controllers;
 import models.Observation;
 import models.Whale;
 import models.WhaleModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -16,6 +18,7 @@ import java.time.LocalDateTime;
 public class Driver extends Controller {
 
     private final WhaleModel activeModel;
+    private final Logger accessLogger = LoggerFactory.getLogger("requests");
 
     @Inject
     public Driver(WhaleModel w){
@@ -29,11 +32,13 @@ public class Driver extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
-        return ok(views.html.index.render("Group 6", activeModel.getObservationStore().getObservations()));
+        accessLogger.info("Homepage loaded");
+        return ok(views.html.index.render( activeModel.getObservationStore().getObservations()));
     }
 
 
     public Result credits() {
+        accessLogger.info("Credits loaded");
         return ok(views.html.credits.render());
     }
 
@@ -43,6 +48,7 @@ public class Driver extends Controller {
 
             temp.getWhales().add(new Whale(Whale.Species.values()[i%6], 10000, Whale.Gender.values()[i%3]));
             activeModel.getObservationStore().addObservation(temp);
+
         }
         return redirect(routes.Driver.index());
     }
