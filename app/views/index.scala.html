@@ -3,7 +3,7 @@
 
 @(observations: util.List[Observation])
 
-@section(groupName: String, observations: util.List[Observation]) = {
+@section(observations: util.List[Observation]) = {
     <h1 class="center" style="font-family: Arial, Helvetica, sans-serif;">Welcome to Whale Watchers!</h1><hr/>
 
     <p class="center">
@@ -26,4 +26,4 @@
     }
 }
 
-@views.html.htmlHeader(section(groupName, observations))
+@views.html.htmlHeader(section(observations))

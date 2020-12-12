@@ -11,7 +11,7 @@ public class ObservationBuilder {
 
     private LocalDateTime time;
     private String location = "";
-    private List<Whale> whales = new ArrayList<>();
+    private final List<Whale> whales = new ArrayList<>();
 
     public ObservationBuilder atLocation(String s){
         location = s;

@@ -18,7 +18,6 @@ import static play.mvc.Http.HttpVerbs.GET;
 
 public class ObservationController extends Controller {
 
-    private final FormFactory formFactory;
     private final MessagesApi me;
     private final Form<ObservationData> observationDataForm;
     private final Form<WhaleData> whaleDataForm;
@@ -29,9 +28,8 @@ public class ObservationController extends Controller {
 
     @Inject
     public ObservationController(FormFactory f, MessagesApi messagesApi, WhaleModel model) {
-        formFactory = f;
-        observationDataForm = formFactory.form(ObservationData.class);
-        whaleDataForm = formFactory.form(WhaleData.class);
+        observationDataForm = f.form(ObservationData.class);
+        whaleDataForm = f.form(WhaleData.class);
         me = messagesApi;
         activeModel = model;
     }

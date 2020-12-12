@@ -18,8 +18,6 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 import static play.mvc.Http.MimeTypes.HTML;
-import static play.mvc.Http.Status.OK;
-import static play.mvc.Http.Status.SEE_OTHER;
 import static play.test.Helpers.*;
 
 public class ObservationControllerTest extends WithApplication {

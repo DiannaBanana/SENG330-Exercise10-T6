@@ -21,7 +21,6 @@ import static play.mvc.Http.HttpVerbs.GET;
 
 public class SearchController extends Controller {
 
-    private final FormFactory formFactory;
     private final MessagesApi me;
     private final Form<SearchData> searchDataForm;
     private final WhaleModel activeModel;
@@ -31,8 +30,7 @@ public class SearchController extends Controller {
 
     @Inject
     public SearchController(FormFactory f, MessagesApi messagesApi, WhaleModel model) {
-        formFactory = f;
-        searchDataForm = formFactory.form(SearchData.class);
+        searchDataForm = f.form(SearchData.class);
         me = messagesApi;
         activeModel = model;
     }
