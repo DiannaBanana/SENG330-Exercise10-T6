@@ -86,21 +86,21 @@
 }
 
 #species{
-    margin: 8;
-    height: 30;
+    margin: 8px;
+    height: 30px;
     text-align: center;
 }
 
 #time{
-    margin: 8;
+    margin: 8px;
 }
 
 #search{
-    margin: 8;
+    margin: 8px;
 }
 
 #reset{
-    margin: 8;
+    margin: 8px;
 }
 
 .delete{
@@ -148,7 +148,7 @@
 
 hr {
     display: block;
-    height: 1 px;
+    height: 1px;
     border: 0;
     border-top: 1px solid #ccc;
     margin: 1em 0;
@@ -174,15 +174,16 @@ hr {
     padding: 8px;
     background-color: white;
     background-image: url("/assets/images/btm.png");
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-size: 25%;
+    background-repeat: repeat-x;
     background-position: bottom;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 30px auto;
-    width: 400px;
-    height: 360px;
+    width: 95%;
+    height: 250px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .search_fields{
@@ -190,6 +191,15 @@ hr {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+#searchForm dl{
+    display: flex;
+    align-items: center;
+}
+
+#searchForm dd, #searchForm dl, #searchForm label{
+    margin: 0 !important;
 }
 
 .credits-panel{

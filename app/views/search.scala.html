@@ -5,7 +5,7 @@
     <h2><b>Whale Search</b></h2>
     Enter the whale species and/or date that you would like to search for.
     <br /><hr/>
-<form action="@routes.SearchController.search()" class="search_fields">
+<form id="searchForm"action="@routes.SearchController.search()" class="vertically-centered search_fields">
     @helper.CSRF.formField
     @{
         val v = WhaleData.speciesOptions();
