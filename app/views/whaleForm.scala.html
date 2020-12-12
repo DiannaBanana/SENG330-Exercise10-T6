@@ -2,7 +2,7 @@
 @(observation: Observation, whaleForm: Form[WhaleData])(implicit request: Http.Request, messages: play.i18n.Messages)
 
 @section(whaleForm: Form[WhaleData]) = {
-    @helper.form(routes.WhaleController.handleResult(obsId = observation.getId)) {
+    @helper.form(routes.WhaleController.addWhale(obsId = observation.getId)) {
     @helper.CSRF.formField
     @helper.select(whaleForm("species"), _root_.utils.FormUtils.doubleString(WhaleData.speciesOptions()))
     @helper.inputText(whaleForm("weight"))
@@ -21,9 +21,9 @@
 @panelVersion(whaleForm: Form[WhaleData])={
     <div class="panel">
         <div class="image-wrapper">
-            <img src="/assets/images/unknown.png"  alt="unknown whale"/>
+            <img src="/assets/images/unknownForm.png"  alt="unknown whale"/>
         </div>
-        <form action="@routes.WhaleController.handleResult(obsId = observation.getId)" onsubmit="validateWhaleInput('#estimatedWeight')" method="POST">
+        <form action="@routes.WhaleController.addWhale(obsId = observation.getId)" onsubmit="validateWhaleInput('#estimatedWeight')" method="POST">
             @helper.CSRF.formField
             <h4 class="whale_info">
                 <div>Species:
