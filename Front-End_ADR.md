@@ -33,6 +33,10 @@ then be mapped into a Twirl template which uses the appropriate file to visually
 
 
 
+
+
+
+
 jQuery was used to enhance the functionality of the web app by adding plugins to the front end to aid use experience and error
 handling. The first feature we implemented was table sorting. Using the [tablesorter plugin](https://mottie.github.io/tablesorter/docs/)
 we added the ability for users sort both tables containing info on Observations and Whales by whichever field was desired.
@@ -55,7 +59,9 @@ is activated. If it does not, then the field is greyed out until it is valid. On
 would type a letter and press enter simultaneously. In this case, we added extra javascript before the form could submit.
 This ensures that even if an extraneous submit event fires with bad text it will be rejected, and the button will be greyed out.
 
-
+One task we completed was using minified javascript wherever possible to save bandwidth and compressing all
+the images on the site to as small as possible. This improves response times on the page which is important for user
+satisfaction. 
 
 ## Consequences
 
@@ -63,3 +69,22 @@ Using jQuery makes it much easier to have external plugins add functionality to 
 to add google maps API functionality to the locations, so that users locations can be more easily collated into useful
 results by making queries such as filtering by a radius. Using form validation on the client side reduces the need for
 time-consuming server calls, especially in the cases where clients may be on mobile with low data rates.
+
+## Challenges and Recommendations
+There were a number of challenging aspects to the front end implementation of the app. Working through the flow as
+presented earlier was one but in many ways the most challenging aspect was the ratio of time spent debugging the HTML
+just to test that it all worked correctly. Changing CSS was a fairly slow process as it was new to most of us. We often
+found it challenging to balance our time between small graphics updates, which took a long time and larger structural changes,
+which often took the same amount of time. 
+
+One other area that we found challenging and would like to spend more time was mobile design. Our website primarily has
+been optimised for desktop devices because that is our development and testing environment. However, after using our
+phones and the Google Chrome simulated phone testing tools, there are some functionality improvements to be made. 
+It would be nice to have more responsive tables on mobile, perhaps even reducing the number of rows so that they could
+be read more easily. We ran the Lighthouse automated test tool for our website and scored and 88 on localhost.
+This is not ideal. Some recommendations include removing all downloaded external plugins so that cached versions
+on client machines can be accessed instead. We would like to make this change but have not in order to ensure that the
+website can run fully localhost without any internet dependencies. 
+
+In the future, we would like to run the javascript through Node.js to generate a single minified script that contains
+only the functions that we need. This will further reduce the download size of the app.

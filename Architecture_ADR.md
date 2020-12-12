@@ -15,7 +15,7 @@ The Play framework provides a robust system for developing server applications i
 uses Scala internally as well as in Twirl, the HTML templating language. The Play framework has been designed to 
 support many of the critical details around routing, and server stability so that developers can focus more on functionality.
 
-In this app, we made use of a few of Play's features
+In this app, we made use of a few of Play's features:
 * Guice Dependency Injection
 * Testing Databuilders
 * Twirl HTML templates
@@ -73,7 +73,7 @@ Testing the controllers that manipulate the model was critical in ensuring that 
 it is designed to do. This helped us differentiate bugs in the front and back end when features were not working as expected.
 
 Making Routes was one of the nicest features of the Play framework. By templating parameters like the observation id from
-url requests before the controllers were called we were able to greatly simplify the hassle of extracting data from uri's directly.
+url requests before the controllers were called we were able to greatly simplify the hassle of extracting data from uris directly.
 The ROUTES were used wherever possible so that if we changed the actual url, all of our forms would update automatically.
 
 Logging all requests and model interactions was also performed as an important part of monitoring the remote app.
