@@ -86,7 +86,13 @@
 }
 
 #species{
+    margin: 8;
+    height: 30;
     text-align: center;
+}
+
+#time{
+    margin: 8;
 }
 
 .delete{
@@ -172,3 +178,19 @@ hr {
     flex-direction: column;
 }
 
+.search_field{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 25%;
+}
+
+.button_panel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button{
+    padding: 8px;
+}
