@@ -20,6 +20,32 @@ framework along with HTML and CSS to achieve the design that the team envisioned
 
 What is the change that we're proposing and/or doing?
 
+jQuery was used to enhance the functionality of the web app by adding plugins to the front end to aid use experience and error
+handling. The first feature we implemented was table sorting. Using the [tablesorter plugin](https://mottie.github.io/tablesorter/docs/)
+we added the ability for users sort both tables containing info on Observations and Whales by whichever field was desired.
+This is critical for users to aggregate data and to find things quickly. While searching is useful, sorting by date is
+far more likely to yield critical insights into the data. 
+
+jQuery was also used to parse the local date fields. There is an input of type datetime-local but it is not supported in
+Firefox. In order to ensure cross browser compatibility, we went with the W3C recommended solution of using the 
+[pickadate](https://www.jqueryscript.net/time-clock/Lightweight-jQuery-Date-Input-Picker.html) api to ensure cross
+browser support for date entry. One of the primary reasons to use a plugin instead of just accepting text for the date
+was to ensure that the dates would be returned to the server in a reliable format. This means that we can always expect
+dates in YYYY/MM/DD HH:MM format and parse them accordingly.
+
+Javascript key event handling was a key component of validating user input. Particularily for the Whale form. For the 
+whale entry form, drop down menus were used to ensure that the input to the system would match one of the enums in the
+model. However, for the estimated weight, we wanted to ensure that the value was greater than or equal to 0. Unlike the
+observation for which has room to expand vertically and print error messages, there was no space within a Whale card.
+As such, on keypress the field is validated. If the field only contains a positive integer then the submit button
+is activated. If it does not, then the field is greyed out until it is valid. One interesting bug occured when a user
+would type a letter and press enter simultaneously. In this case, we added extra javascript before the form could submit.
+This ensures that even if an extraneous submit event fires with bad text it will be rejected and the button will be greyed out.
+
+
+
 ## Consequences
 
-What becomes easier or more difficult to do because of this change?
+Using jQuery makes it much easier to have external plugins add functionality to the website. In the future, we would like
+to add google maps API functionality to the locations, so that users locations can be more easily coallatted into useful
+results by making queries such as filtering by radius.
