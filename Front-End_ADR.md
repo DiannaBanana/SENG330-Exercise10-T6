@@ -51,7 +51,7 @@ Firefox. In order to ensure cross browser compatibility, we went with the W3C re
 [pickadate](https://www.jqueryscript.net/time-clock/Lightweight-jQuery-Date-Input-Picker.html) api to ensure cross
 browser support for date entry. One of the primary reasons to use a plugin instead of just accepting text for the date
 was to ensure that the dates would be returned to the server in a reliable format. This means that we can always expect
-dates in YYYY/MM/DD HH:MM format and parse them accordingly.
+dates in `YYYY/MM/DD HH:MM` format and parse them accordingly.
 
 Javascript key event handling was a key component of validating user input. For the 
 whale entry form, drop down menus were used to ensure that the input to the system would match one of the enums in the
