@@ -37,9 +37,9 @@ then be mapped into a Twirl template which uses the appropriate file to visually
 
 
 
-jQuery was used to enhance the functionality of the web app by adding plugins to the front end to aid use experience and error
-handling. The first feature we implemented was table sorting. Using the [tablesorter plugin](https://mottie.github.io/tablesorter/docs/)
-we added the ability for users sort both tables containing info on Observations and Whales by whichever field was desired.
+jQuery was used to enhance the functionality of the web app by adding plugins to the front end to aid user experience and error
+handling. The first feature we implemented was table sorting. This is accessed via the `Whale Analytics` navigation panel. Using the [tablesorter plugin](https://mottie.github.io/tablesorter/docs/)
+we added the ability for users to sort through the table containing info on Observations and Whales by whichever field was desired.
 This is critical for users to aggregate data and to find things quickly. While searching is useful, sorting by date is
 far more likely to yield critical insights into the data. 
 
