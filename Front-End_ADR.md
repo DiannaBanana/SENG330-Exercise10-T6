@@ -39,10 +39,12 @@ sized cards to fit on mobile devices.
 
 
 jQuery was used to enhance the functionality of the web app by adding plugins to the front end to aid user experience and error
-handling. The first feature we implemented was table sorting. This is accessed via the `Whale Analytics` navigation panel. Using the [tablesorter plugin](https://mottie.github.io/tablesorter/docs/)
+handling. The first feature we implemented was table sorting. Using the [tablesorter plugin](https://mottie.github.io/tablesorter/docs/)
 we added the ability for users to sort through the table containing info on Observations and Whales by whichever field was desired.
 This is critical for users to aggregate data and to find things quickly. While searching is useful, sorting by date is
-far more likely to yield critical insights into the data. 
+far more likely to yield critical insights into the data. Also, through the `Whale Analytics` panel, we get a table with all the current
+whales in the observations which can then be filtered using the provided options. This is useful for when one wants to know about either
+all the observations containing a specific whale or all the observations that occured on a specific date.
 
 jQuery was also used to parse the local date fields. There is an input of type datetime-local but it is not supported in
 Firefox. In order to ensure cross browser compatibility, we went with the W3C recommended solution of using the 
