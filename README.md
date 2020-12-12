@@ -1,3 +1,11 @@
+# Web Hosting
+The site is available at [https://whale-watcher-330.herokuapp.com/](https://whale-watcher-330.herokuapp.com/)
+
+
+
+
+
+
 Please read thru the [overall exercises overview](https://github.com/SENG330/course/blob/master/exercises/Exercises.md).
 
 # Exercise 10

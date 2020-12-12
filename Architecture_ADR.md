@@ -99,7 +99,8 @@ some complexity of different users entering information in different timezones. 
 originally wanted to integrate the Google Maps API, but did not have enough time to do so. A string can store the relevant information,
 but can be harder to filter in data analysis. The collection of whales was chosen to be a set for two primary reasons.
 1) It doesn't make conceptual sense for any whale to be observed twice at the same time. The set imposes a natural restriction
-on the physical phenomenon. 2) When updating whales in the model, the same action can used for creating or updating. This simplifies the 
+on the physical phenomenon. 
+2) When updating whales in the model, the same action can used for creating or updating. This simplifies the 
 logic of the model greatly.
    
 Whales contain an estimated weight, gender, species and id. In order to ensure a unique id for comparing whales,

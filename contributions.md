@@ -4,6 +4,7 @@
 - Unit Testing
 - Set up Heroku hosting
 - Code review
+- Logging
 
 # Charles Yang - KuroLink
 - Worked on UI elements for the search fields

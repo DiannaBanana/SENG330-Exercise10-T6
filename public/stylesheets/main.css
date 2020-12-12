@@ -1,7 +1,13 @@
 @media screen and (min-width: 500px) {
-    .panel, .obs_panel {
+    .panel {
         width: 440px;
         height: 460px;
+        border: #00dd1c;
+    }
+
+    .obs_panel {
+        width: 440px;
+        height: 550px;
         border: #00dd1c;
     }
 }
