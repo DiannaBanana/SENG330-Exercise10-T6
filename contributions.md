@@ -8,10 +8,12 @@
 # Charles Yang - KuroLink
 - Worked on UI elements for the search fields
 - Assisted with initial search implementation
+- Bug fixing
 
-# Diana Borinaga - DiannaBanana
-- UI improvements: images and layout
-- Unit testing 
+# Dianna Borinaga - DiannaBanana
+- Worked on UI elements: images, layout
+- Unit testing
+- Bug fixing
 
 # Kenil Shah - kenilshah35
 - Implemented REST API
