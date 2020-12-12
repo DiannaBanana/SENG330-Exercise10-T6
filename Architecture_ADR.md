@@ -1,4 +1,11 @@
 # Architecture of App
+
+## Status
+
+Accepted
+
+## Context
+
 The server side architecture of any web application is critical to ensure that the web app is stable under different
 loads and is able to generate the data in a method that is responsive, and reliable. In addition, any private user
 data must be secured, and the app should protect itself against malicious attacks.
@@ -20,7 +27,7 @@ The app was designed to carefully adhere to Model-View-Controller (MVC) principl
 The model package primarily contains `Controller` subclasses. These classes provide the functionality to respond to HTTP
 events and provide an appropriate response to the client. Controllers are primarily defined by the methods they contain.
 Controller classes are instantiated to hold private fields that cannot be static. These dependencies are injected by
-Guice and are used to provide information to the response methods. Some examples of injected objects are
+Guice and are used to provide information to the response methods. Some examples of injected objects are:
 * FormFactory: The Play factory for handling form input for a given data class
 * MessagesApi: Used to pass error messages between parts of the application
 * WhaleModel: The singleton model of the Observations and Whales
@@ -62,12 +69,12 @@ the creation of specific headers and related testing data like form submissions 
 we wanted to ensure that each controller works as expected under a range of conditions. For many test cases the pattern
 involved cleaning out the model to make tests independent, assembling the model in a known way, invoking a request
 that modified the model, verify that the model ended in the right state and that the content matched expectations.
-Testing the controllers that manipulate the model was critical to ensure that happened correctly if the UI responds how
+Testing the controllers that manipulate the model was critical in ensuring that events happened correctly if the UI responds how
 it is designed to do. This helped us differentiate bugs in the front and back end when features were not working as expected.
 
 Making Routes was one of the nicest features of the Play framework. By templating parameters like the observation id from
-url requests before the controllers were called greatly simplified the hassle of extracting data from uris directly.
-The ROUTES were used wherever possible so that if we changed the actual url all of our forms would update automatically.
+url requests before the controllers were called we were able to greatly simplify the hassle of extracting data from uri's directly.
+The ROUTES were used wherever possible so that if we changed the actual url, all of our forms would update automatically.
 
 Logging all requests and model interactions was also performed as an important part of monitoring the remote app.
 One of the few diagnostic tools available from the public site is the ability to read log files out of the app. SJF4J gives a reliable
@@ -75,8 +82,8 @@ way to operate logging. We had two log streams. "requests" and WhaleModel.class.
 that was being returned to the user was logged at an info level. Any response other than a 404 which is handled internally
 is not in error, even in the case of error handling. The WhaleModel stream had more varied levels. If the user performs
 an operation successfully on the model, this is recorded as debug. Likely this information will not be considered.
-Any time that a model action could not be performed this is recorded as a warn. The system is not failing and the user
-will not experience and error but the action has had no meaningful effect. Any exceptions caught in try/catches are logged
+Any time that a model action could not be performed, this is recorded as a warning. The system is not failing and the user
+will not experience an error but the action has had no meaningful effect. Any exceptions caught in try/catches are logged
 at an error level.
 
 ## Developing the Model
@@ -89,11 +96,11 @@ is used presently.
 
 An Observation consists of a time, a location and a set of whales. The time is stored as a `LocalDateTime` to better capture 
 some complexity of different users entering information in different timezones. The location is stored as a string. We
-wanted to integrate the Google Maps API, but did not have enough time to do so. A string can store the relevant information,
+originally wanted to integrate the Google Maps API, but did not have enough time to do so. A string can store the relevant information,
 but can be harder to filter in data analysis. The collection of whales was chosen to be a set for two primary reasons.
 1) It doesn't make conceptual sense for any whale to be observed twice at the same time. The set imposes a natural restriction
-on the physical phenomenon. 2) When updating whales in the model, the same action can used for creating or updating. This
-   simplifies the logic of the model greatly.
+on the physical phenomenon. 2) When updating whales in the model, the same action can used for creating or updating. This simplifies the 
+logic of the model greatly.
    
 Whales contain an estimated weight, gender, species and id. In order to ensure a unique id for comparing whales,
 a static Long counter keeps track of the total number of whale objects instantiated and assigns them an id on creation.
@@ -112,11 +119,11 @@ Writing unit tests was also challenging. Most of the specifications for valid in
 were dictated by the HTML standard, so we could not write tests before we had implemented the front end very easily. 
 Once we had them working, we were able to verify the behaviour of the system outputs. An interesting challenge that we
 resolved because of testing was using a static model. Initially, we made WhaleModel a static singleton. However, as
-soon we began writing tests we observed unsurprising issues with flakiness due to concurrent tests operating on the model
+soon as we began writing tests we observed unsurprising issues with flakiness due to concurrent tests operating on the model
 at the same time. We were also tripped up by the fact that SBT does not support JUnit5 which we were all used to.
 
 Posting the app to a public server on Heroku was not too hard, but it was challenging to ensure that it was
-operating properly initially to set up the git repository and make sure that we all the required configuration to install
+operating properly initially to set up the git repository and make sure that we all had the required configuration to install
 the right version of Java etc.
 
 ## Future Work
@@ -131,7 +138,7 @@ that we publish accurately match the operation of the system is just as critical
 enhance this by auto-extracting get parameters and passing them into the controllers. 
 
 There are two other larger features that a system like this should have. First is user authentication. Because anyone
-has equal rights to create and delete whales, and observations the leaves important data exposed. Creating and deleting
+has equal rights to create and delete whales and observations, this leaves important data exposed. Creating and deleting
 records should be limited to Scientists (Admins) and those who created the record. The second thing we would like to add
 is the ability to upload images of sightings. This information would be quite useful to scientists later and would allow
-for some analysis to be moved from users without training to people who could extract additional context from raw data.
+for some analysis to be moved from users without training to the people who could extract additional context from the raw data.
