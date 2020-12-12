@@ -29,5 +29,6 @@ libraryDependencies ++= Seq(
 
 )
 
+testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-a"))
 
 testFrameworks += TestFrameworks.JUnit
