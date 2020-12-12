@@ -3,13 +3,13 @@
 | Req # | Implemented? | Relevant Commit | Final Commit | Implemented by |
 |----|----|----|----| ----|
 | #1 | Yes | sha1: 1358feeaa9bf6bebba9c36dd44a70a2e626ed8c0 | Link: [Heroku] | @a-krawciw, @KuroLink, @DiannaBanana, @yiliangliu08, @kenilshah35 |
-| #2 | Yes | sha1: 9a8408c306bcf524d90561734fcd90883e04695b | Link: [Main Display] - [All Display Code] | @a-krawciw, @KuroLink, @DiannaBanana |
+| #2 | Yes | sha1: 9a8408c306bcf524d90561734fcd90883e04695b | Link: [Main Display] --- [All Display Code] | @a-krawciw, @KuroLink, @DiannaBanana |
 | #3 | Yes | sha1: 223f34211c6b2786f05b46b6c03c053a8318cbd9 | Link: [Whale Creation] | @a-krawciw, @KuroLink, @DiannaBanana | 
 | #4 | Yes | sha1: 7d6458060906760fc32c7af6a2e7781bc0d745fd | Link: [Observation Creation] | @a-krawciw, @KuroLink, @DiannaBanana |
 | #5 | Yes | sha1: c85c818bfbd7654d1dc20b23396922d47b1ee28b | Link: [Search] | @yiliangliu08, @KuroLink, @a-krawciw |
 | #6 | Yes | sha1: c61ec92d488f39f2c506bc03e9169ea3c0e92e59 | Link: [WhaleAPI] | @kenilshah35, @a-krawciw |
 | #7 | Yes | sha1: 5f3a9acb778c4d8eb9ead95e28358712950357a2 | Link: [Tests] | @a-krawciw, @DiannaBanana |
-| #8 | Yes | adr1:[Architecture]  | adr2: [Front-End] | @a-krawciw, @KuroLink, @DiannaBanana |
+| #8 | Yes | adr1: [Architecture]  | adr2: [Front-End] | @a-krawciw, @KuroLink, @DiannaBanana |
 | #9 | Yes | This is everywhere | This is everywhere | @a-krawciw, @KuroLink, @DiannaBanana |
 
 
