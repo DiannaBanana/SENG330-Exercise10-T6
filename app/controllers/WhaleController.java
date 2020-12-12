@@ -3,10 +3,11 @@ package controllers;
 import models.Observation;
 import models.Whale;
 import models.WhaleModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.api.http.MediaRange;
 import play.data.Form;
 import play.data.FormFactory;
-import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -17,16 +18,15 @@ import java.util.Optional;
 import static play.mvc.Http.MimeTypes.JSON;
 
 public class WhaleController extends Controller {
-  private FormFactory formFactory;
-  private MessagesApi messages;
-  private Form<WhaleData> form;
-  private WhaleModel activeModel;
+  private final Form<WhaleData> form;
+  private final WhaleModel activeModel;
+  private final Logger accessLogger = LoggerFactory.getLogger("requests");
+  private final Logger modelLog = LoggerFactory.getLogger(WhaleModel.class);
+
 
   @Inject
-  public WhaleController(FormFactory f, MessagesApi messages, WhaleModel model){
-    formFactory = f;
-    this.messages = messages;
-    form = formFactory.form(WhaleData.class);
+  public WhaleController(FormFactory f, WhaleModel model){
+    form = f.form(WhaleData.class);
     activeModel = model;
   }
 
@@ -42,13 +42,20 @@ public class WhaleController extends Controller {
 
         Optional<Observation> obsWrapper = activeModel.getObservationStore().getObservationById(obsId);
         obsWrapper.ifPresent(observation -> observation.getWhales().add(whale));
+
+
+        if(obsWrapper.isEmpty()){
+          modelLog.warn("Tried to add whale to non existent observation id:" + obsId);
+        } else {
+          modelLog.debug("Added whale " + whale.getId() + " to observation " + obsId);
+        }
+
+
       } catch (Exception e){
-        e.printStackTrace();
+        accessLogger.error("Error while adding whale to observation" + e);
       }
-      return redirect(routes.ObservationController.showObservation(obsId));
-    } else {
-      return ok(filledForm.errorsAsJson());
     }
+    return redirect(routes.ObservationController.showObservation(obsId));
   }
 
   public Result removeWhale(Long obsId, Long whaleId){
@@ -56,10 +63,19 @@ public class WhaleController extends Controller {
 
     observationOptional.ifPresent(observation -> observation.getWhales().removeIf(w -> w.getId().equals(whaleId)));
 
+    if(observationOptional.isEmpty()){
+      modelLog.warn("Tried to remove whale from non-existent observation id: " + obsId);
+    } else {
+      modelLog.info("Removed whale " + whaleId + " from observation " + obsId);
+    }
+
     return redirect(routes.ObservationController.showObservation(obsId));
   }
 
   public Result manageRequestType(Http.Request request){
+
+    //This is required because most browsers accept anything */* so a call to <code>request.accepts()</code>
+    //always is true
     if (request.acceptedTypes().stream().map(MediaRange::toString).anyMatch(x -> x.equalsIgnoreCase(JSON))) {
       return new WhaleAPI(activeModel).listWhales(request);
     } else {
